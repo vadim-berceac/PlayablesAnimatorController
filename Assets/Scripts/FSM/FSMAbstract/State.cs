@@ -6,6 +6,7 @@ public abstract class State : ScriptableObject, IState
     [field: Space (3)]
     
     [field: Header("Speed Settings")]
+    [field: SerializeField] public SpeedMaxRule SpeedMaxRule { get; set; }
     [field: SerializeField] public float MovementSpeed { get; set; }
     [field: SerializeField] public float AnimationSpeed { get; set; }
     [field: SerializeField] public float EnterBlendSpeed { get; set; }

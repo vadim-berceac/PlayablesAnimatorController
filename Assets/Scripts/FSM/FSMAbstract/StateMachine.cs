@@ -39,7 +39,7 @@ public abstract class FSMAbstract : MonoBehaviour, IStateMachine
     protected virtual void Update()
     {
         CurrentState?.OnUpdate(this);
-        StatesTransition.UpdateBlending(CurrentState);
+        StatesTransition.UpdateBlending();
         AnimatorController.SetAnimationSpeed(StatesTransition.CurrentAnimationSpeed);
     }
 

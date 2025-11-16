@@ -11,11 +11,6 @@ public class RunState : State
             stateMachine.SwitchState(StateType.Walk);
         }
         
-        if (Mathf.Approximately(stateMachine.InputHandler.GetMoveInput().magnitude, 0))
-        {
-            stateMachine.SwitchState(StateType.Idle);
-        }
-
         if (Mathf.Approximately(stateMachine.StatesTransition.CurrentMovementSpeed, MovementSpeed) &&
             stateMachine.StatesTimer.IsFinished)
         {

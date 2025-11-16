@@ -8,35 +8,49 @@ public class StatesTransition
     
     public Action<float> OnMovementSpeedChanged { get; set; }
     public Action<float> OnAnimationSpeedChanged { get; set; }
-    public StatesTransition() { }
-    public void UpdateBlending(State targetState)
+    private readonly FSMAbstract _fsmAbstract;
+    private State _targetState;
+    private float _animationFactor;
+
+    public StatesTransition(FSMAbstract fsmAbstract)
     {
-        // движение к целевой скорости
+        _fsmAbstract = fsmAbstract;
+    }
+    
+    public void UpdateBlending()
+    {
+        switch (_fsmAbstract.CurrentState.SpeedMaxRule)
+        {
+            case SpeedMaxRule.Override: { _targetState = _fsmAbstract.CurrentState; } break;
+            case SpeedMaxRule.UsePreviousStateValue: { _targetState = _fsmAbstract.PreviousState; }; break;
+            default: { _targetState = _fsmAbstract.CurrentState; }; break;
+        }
+        
         CurrentMovementSpeed = Mathf.MoveTowards(
             CurrentMovementSpeed,
-            targetState.MovementSpeed,
-            targetState.EnterBlendSpeed * Time.deltaTime
+            _targetState.MovementSpeed,
+            _targetState.EnterBlendSpeed * Time.deltaTime
         );
 
-        // вычисление коэффициента анимации
-        float animationFactor;
-
-        if (targetState.MovementSpeed == 0f)
+     
+        if (_targetState.MovementSpeed == 0f)
         {
-            // если целевая скорость = 0, считаем цель достигнутой
-            animationFactor = (CurrentMovementSpeed == 0f) ? 1f : CurrentMovementSpeed;
+            _animationFactor = (CurrentMovementSpeed == 0f) ? 1f : CurrentMovementSpeed;
         }
         else
         {
-            // разрешаем значения > 1, если CurrentMovementSpeed > targetState.MovementSpeed
-            animationFactor = CurrentMovementSpeed / targetState.MovementSpeed;
+            _animationFactor = CurrentMovementSpeed / _targetState.MovementSpeed;
         }
 
-        CurrentAnimationSpeed = animationFactor;
+        CurrentAnimationSpeed = _animationFactor;
 
         OnMovementSpeedChanged?.Invoke(CurrentMovementSpeed);
         OnAnimationSpeedChanged?.Invoke(CurrentAnimationSpeed);
     }
+}
 
-
+public enum SpeedMaxRule
+{
+    Override,
+    UsePreviousStateValue,
 }

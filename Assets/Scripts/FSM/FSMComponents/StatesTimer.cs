@@ -19,7 +19,7 @@ public class StatesTimer
     {
         _duration = Mathf.Max(0f, duration); 
         _elapsed = 0f;
-        _isActive = _duration > 0f;
+        _isActive = _duration >= 0f;
     }
 
     public void Start(State state)

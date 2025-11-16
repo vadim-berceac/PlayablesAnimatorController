@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: JumpState
   m_EditorClassIdentifier: Assembly-CSharp::JumpState
   <StateType>k__BackingField: 4
-  <MovementSpeed>k__BackingField: 5
+  <SpeedMaxRule>k__BackingField: 1
+  <MovementSpeed>k__BackingField: 0
   <AnimationSpeed>k__BackingField: 1
   <EnterBlendSpeed>k__BackingField: 25
   <TimerStartMode>k__BackingField: 2

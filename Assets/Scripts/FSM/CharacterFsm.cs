@@ -11,7 +11,7 @@ public class CharacterFsm : FSMAbstract
    {
        StatesContainer = statesContainer;
        AnimatorController = new PlayablesAnimatorController(AnimationSettings.Animator);
-       StatesTransition = new StatesTransition();
+       StatesTransition = new StatesTransition(this);
        StatesTimer = new StatesTimer();
 
        if (IsPlayerControlled)
