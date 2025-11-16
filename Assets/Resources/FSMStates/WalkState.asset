@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eac9ab9ac5f2304496d172aed73642f, type: 3}
+  m_Name: WalkState
+  m_EditorClassIdentifier: Assembly-CSharp::WalkState
+  <StateType>k__BackingField: 1
+  <MovementSpeed>k__BackingField: 3
+  <AnimationSpeed>k__BackingField: 1
+  <EnterBlendSpeed>k__BackingField: 5
+  <TestClip>k__BackingField: {fileID: 3094330708855449807, guid: 7802a191b54ed9c41acf81c557122ee2, type: 3}
