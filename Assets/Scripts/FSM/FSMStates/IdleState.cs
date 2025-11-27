@@ -1,18 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IdleState", menuName = "FSM/States/IdleState")]
 public class IdleState : State
 {
-    public override void CheckSwitchConditions(IStateMachine stateMachine)
+    private void OnEnable()
     {
-        base.CheckSwitchConditions(stateMachine);
-        if (stateMachine.InputHandler.GetMoveInput().magnitude > 0.05f)
+        SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            stateMachine.SwitchState(StateType.Walk);
-        }
-        if (stateMachine.InputHandler.GetJumpInput())
-        {
-            stateMachine.SwitchState(StateType.Jump);
-        }
+            new(c => (c.InputHandler.GetMoveInput().magnitude > 0.05f), c => StateType.Walk),
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+        };
     }
 }

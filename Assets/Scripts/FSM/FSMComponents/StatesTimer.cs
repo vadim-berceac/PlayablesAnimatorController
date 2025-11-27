@@ -30,13 +30,13 @@ public class StatesTimer
             case TimerStartMode.StateValue : SetDuration(state.TimeToExit); break;
             case TimerStartMode.NonLoopiedAnimationLenght:
             {
-                if (state.TestClip == null || state.TestClip.length == 0 || state.TestClip.isLooping)
+                if (state.Clips[0] == null || state.Clips[0].length == 0 || state.Clips[0].isLooping)
                 {
                     SetDuration(0f);
                 }
                 else
                 {
-                    SetDuration(state.TestClip.length);
+                    SetDuration(state.Clips[0].length);
                 }
             };
                 break;

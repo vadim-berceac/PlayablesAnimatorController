@@ -1,19 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SprintState", menuName = "FSM/States/SprintState")]
 public class SprintState : State
 {
-    public override void CheckSwitchConditions(IStateMachine stateMachine)
+    private void OnEnable()
     {
-        base.CheckSwitchConditions(stateMachine);
-        if (stateMachine.StatesTimer.IsFinished || !stateMachine.InputHandler.GetRunInput())
+        SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            stateMachine.SwitchState(StateType.Run);
-        }
-        
-        if (stateMachine.InputHandler.GetJumpInput())
-        {
-            stateMachine.SwitchState(StateType.Jump);
-        }
+            new(c => (c.StatesTimer.IsFinished || !c.InputHandler.GetRunInput()), c => StateType.Run),
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+        };
     }
 }

@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.greenbamboogames.playablegraphmonitor": {
+      "version": "https://github.com/SolarianZ/UnityPlayableGraphMonitorTool.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "79a77b0c18ac605ad3dbf9b7b72e27696beafb75"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,

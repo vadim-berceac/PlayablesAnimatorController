@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: SprintState
   m_EditorClassIdentifier: Assembly-CSharp::SprintState
   <StateType>k__BackingField: 3
+  <SpeedMaxRule>k__BackingField: 0
   <MovementSpeed>k__BackingField: 7
   <AnimationSpeed>k__BackingField: 1
   <EnterBlendSpeed>k__BackingField: 2
+  <CrossFadeTime>k__BackingField: 0.35
   <TimerStartMode>k__BackingField: 1
   <TimeToExit>k__BackingField: 5
-  <TestClip>k__BackingField: {fileID: 3094330708855449807, guid: 61c5e06fbc0e7c947a50c72f565da62a, type: 3}
+  <Clips>k__BackingField:
+  - {fileID: 3094330708855449807, guid: 61c5e06fbc0e7c947a50c72f565da62a, type: 3}

@@ -1,4 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Audio;
+using UnityEngine.Playables;
 
 public abstract class State : ScriptableObject, IState
 {
@@ -10,6 +14,7 @@ public abstract class State : ScriptableObject, IState
     [field: SerializeField] public float MovementSpeed { get; set; }
     [field: SerializeField] public float AnimationSpeed { get; set; }
     [field: SerializeField] public float EnterBlendSpeed { get; set; }
+    [field: SerializeField] public float CrossFadeTime { get; set; }
     
     [field: Space (3)]
     [field: Header("Timer Settings")]
@@ -18,16 +23,19 @@ public abstract class State : ScriptableObject, IState
     
     [field: Space (3)]
     [field: Header("Animation Settings")]
-    [field: SerializeField] public AnimationClip TestClip { get; set; } // временно, заменить на более сложный бленд
-
+    [field: SerializeField] public AnimationClip[] Clips { get; set; } 
+    
+    protected List<SwitchStateCondition<IStateMachine>> SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>();
+    
     public virtual void OnEnter(IStateMachine stateMachine)
     {
         stateMachine.StatesTimer.Start(this);
-        if (TestClip == null)
+        if (Clips == null || Clips.Length == 0)
         {
             return;
         }
-        stateMachine.AnimatorController.Play(StateType.ToString());
+        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.PlayableGraph)
+            , stateMachine.PreviousState ? CrossFadeTime : 0);
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)
@@ -38,7 +46,24 @@ public abstract class State : ScriptableObject, IState
     
     public virtual void OnFixedUpdate(IStateMachine stateMachine) { }
     public virtual void OnLateUpdate(IStateMachine stateMachine) { }
-    public virtual void CheckSwitchConditions(IStateMachine stateMachine) { }
+
+    private void CheckSwitchConditions(IStateMachine stateMachine)
+    {
+        if (SwitchStateConditions == null || SwitchStateConditions.Count == 0)
+        {
+            return;
+        }
+
+        foreach (var c in SwitchStateConditions)
+        {
+            if (!c.Check(stateMachine, out var newState))
+            {
+                continue;
+            }
+            stateMachine.SwitchState(newState);
+            return;
+        }
+    }
 
     public virtual void OnExit(IStateMachine stateMachine)
     {
@@ -46,9 +71,24 @@ public abstract class State : ScriptableObject, IState
         stateMachine.InputHandler.ResetBufferedInput();
     }
 
-    public override string ToString()
+    private AnimationMixerPlayable GetAnimationMixerPlayable(PlayableGraph graph, int activeClipIndex = 0)
     {
-        return StateType.ToString();
+        var mixer = AnimationMixerPlayable.Create(graph, Clips.Length);
+
+        for (var i = 0; i < Clips.Length; i++)
+        {
+            if (Clips[i] == null)
+            {
+                continue;
+            }
+            var clipPlayable = AnimationClipPlayable.Create(graph, Clips[i]);
+
+            graph.Connect(clipPlayable, 0, mixer, i);
+          
+            mixer.SetInputWeight(i, i == activeClipIndex ? 1f : 0f);
+        }
+
+        return mixer;
     }
 }
 
@@ -63,16 +103,5 @@ public interface IState
     public void OnUpdate(IStateMachine stateMachine);
     public void OnFixedUpdate(IStateMachine stateMachine);
     public void OnLateUpdate(IStateMachine stateMachine);
-    public void CheckSwitchConditions(IStateMachine stateMachine);
     public void OnExit(IStateMachine stateMachine);
 }
-
-public enum StateType
-{
-    Idle,
-    Walk,
-    Run,
-    Sprint,
-    Jump
-}
-

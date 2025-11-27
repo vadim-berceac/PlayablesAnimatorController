@@ -561,8 +561,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2261822127126016115, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
-      propertyPath: <IsPlayerControlled>k__BackingField
-      value: 1
+      propertyPath: <AnimationSettings>k__BackingField.<Fallback>k__BackingField
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6163752327915369098, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
       propertyPath: m_Name

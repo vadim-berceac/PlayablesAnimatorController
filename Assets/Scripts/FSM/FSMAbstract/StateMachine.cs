@@ -40,16 +40,22 @@ public abstract class FSMAbstract : MonoBehaviour, IStateMachine
     {
         CurrentState?.OnUpdate(this);
         StatesTransition.UpdateBlending();
-        AnimatorController.SetAnimationSpeed(StatesTransition.CurrentAnimationSpeed);
+        //AnimatorController.SetFloat(AnimationParameters.MovementSpeed, StatesTransition.CurrentAnimationSpeed);
     }
 
     protected virtual void FixedUpdate()
     {
         CurrentState?.OnFixedUpdate(this);
+        AnimatorController.OnUpdate();
     }
 
     protected virtual void LateUpdate()
     {
         CurrentState?.OnLateUpdate(this);
+    }
+
+    protected virtual void OnDestroy()
+    {
+        AnimatorController?.Dispose();
     }
 }

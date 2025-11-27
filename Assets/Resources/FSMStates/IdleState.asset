@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: IdleState
   m_EditorClassIdentifier: Assembly-CSharp::IdleState
   <StateType>k__BackingField: 0
+  <SpeedMaxRule>k__BackingField: 0
   <MovementSpeed>k__BackingField: 0
   <AnimationSpeed>k__BackingField: 1
   <EnterBlendSpeed>k__BackingField: 8
-  <TestClip>k__BackingField: {fileID: -2576967968662016515, guid: 5462b8d1f234c61449e1baa65ba9f981, type: 3}
+  <CrossFadeTime>k__BackingField: 0.2
+  <TimerStartMode>k__BackingField: 0
+  <TimeToExit>k__BackingField: 0
+  <Clips>k__BackingField:
+  - {fileID: -2576967968662016515, guid: 5462b8d1f234c61449e1baa65ba9f981, type: 3}

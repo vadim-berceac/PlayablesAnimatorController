@@ -1,25 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WalkState", menuName = "FSM/States/WalkState")]
 public class WalkState : State
 {
-    public override void CheckSwitchConditions(IStateMachine stateMachine)
+    private void OnEnable()
     {
-        base.CheckSwitchConditions(stateMachine);
-        if (stateMachine.InputHandler.GetRunInput() &&
-            Mathf.Approximately(stateMachine.StatesTransition.CurrentMovementSpeed, MovementSpeed))
+        SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            stateMachine.SwitchState(StateType.Run);
-        }
-        
-        if (Mathf.Approximately(stateMachine.InputHandler.GetMoveInput().magnitude, 0))
-        {
-            stateMachine.SwitchState(StateType.Idle);
-        }
-        
-        if (stateMachine.InputHandler.GetJumpInput())
-        {
-            stateMachine.SwitchState(StateType.Jump);
-        }
+            new(c => (c.InputHandler.GetRunInput() &&
+                      Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed)), c => StateType.Run),
+            new(c => (Mathf.Approximately(c.InputHandler.GetMoveInput().magnitude, 0)), c => StateType.Idle),
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
+        };
     }
 }

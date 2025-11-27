@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "JumpState", menuName = "FSM/States/JumpState")]
 public class JumpState : State
 {
-    public override void CheckSwitchConditions(IStateMachine stateMachine)
+    private void OnEnable()
     {
-        if (stateMachine.StatesTimer.IsFinished)
+        SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            stateMachine.SwitchState(stateMachine.PreviousState.StateType);
-        }
+            new(c => (c.StatesTimer.IsFinished), c => c.PreviousState.StateType),
+        };
     }
 }

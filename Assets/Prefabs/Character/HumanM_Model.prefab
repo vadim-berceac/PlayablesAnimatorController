@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ebc2c99f498edd545a19147557da526e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       propertyPath: m_UpdateMode
       value: 1
@@ -98,5 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c409c601c9dc14f9d0ed42d4e3cda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterFSM
+  <IsPlayerControlled>k__BackingField: 1
   <AnimationSettings>k__BackingField:
     <Animator>k__BackingField: {fileID: 586013780885664330}
+    <Fallback>k__BackingField: {fileID: -2576967968662016515, guid: 5462b8d1f234c61449e1baa65ba9f981, type: 3}
