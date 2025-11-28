@@ -21,4 +21,5 @@ MonoBehaviour:
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
   <Clips>k__BackingField:
-  - {fileID: 3094330708855449807, guid: 7802a191b54ed9c41acf81c557122ee2, type: 3}
+  - {fileID: 3094330708855449807, guid: a7b87f52da93a1047847479c0b9dc82d, type: 3}
+  - {fileID: 3094330708855449807, guid: 01d3a453c151ee14a9d75f24ad11bfbe, type: 3}

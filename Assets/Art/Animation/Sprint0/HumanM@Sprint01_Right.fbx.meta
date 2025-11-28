@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61c5e06fbc0e7c947a50c72f565da62a
+guid: 86dab4cdfb3f2494594e72c71d50c156
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanM@Sprint01_Forward
+      name: HumanM@Sprint01_Right
       takeName: Untitled
       internalID: 3094330708855449807
       firstFrame: 0

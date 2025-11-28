@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7802a191b54ed9c41acf81c557122ee2
+guid: 7c2104b55c5eff645a37f785049bf2a2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanM@Walk01_Forward
+      name: HumanM@Run01_Backward
       takeName: Untitled
       internalID: 3094330708855449807
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
