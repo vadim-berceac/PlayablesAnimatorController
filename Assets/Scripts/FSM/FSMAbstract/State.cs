@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
-using UnityEngine.Audio;
 using UnityEngine.Playables;
 
 public abstract class State : ScriptableObject, IState
@@ -40,11 +39,14 @@ public abstract class State : ScriptableObject, IState
 
     public virtual void OnUpdate(IStateMachine stateMachine)
     {
-        stateMachine.StatesTimer.Update();
         CheckSwitchConditions(stateMachine);
     }
+
+    public virtual void OnFixedUpdate(IStateMachine stateMachine)
+    {
+        stateMachine.StatesTimer.Update();
+    }
     
-    public virtual void OnFixedUpdate(IStateMachine stateMachine) { }
     public virtual void OnLateUpdate(IStateMachine stateMachine) { }
 
     private void CheckSwitchConditions(IStateMachine stateMachine)

@@ -47,7 +47,7 @@ public class StatesTimer
     {
         if (!_isActive) return;
 
-        _elapsed += Time.deltaTime;
+        _elapsed += Time.fixedDeltaTime;
 
         if (_elapsed < _duration)
         {
