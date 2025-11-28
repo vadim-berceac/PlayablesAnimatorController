@@ -1,0 +1,187 @@
+using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Playables;
+
+public class PlayablesAnimatorController
+{
+    private PlayableGraph _playableGraph;
+    private readonly AnimationMixerPlayable _generalMixerPlayable;
+
+    private AnimationMixerPlayable _previousMixerPlayable;
+    private AnimationMixerPlayable _currentMixerPlayable;
+
+    private float _crossFadeDuration;
+    private float _crossFadeTime;
+    private int _activePort;
+
+    private bool _pendingCleanup;
+    private int _pendingPort = -1;
+    private AnimationMixerPlayable _fadingOutMixer;
+
+    private const float TinyWeight = 1e-6f;
+
+    public PlayableGraph PlayableGraph => _playableGraph;
+    public bool IsCrossFading { get; private set; }
+
+    public PlayablesAnimatorController(Animator animator)
+    {
+        _playableGraph = PlayableGraph.Create("PlayableGraph");
+        var playableOutput = AnimationPlayableOutput.Create(_playableGraph, "Animation", animator);
+
+        animator.applyRootMotion = false;
+        _generalMixerPlayable = AnimationMixerPlayable.Create(_playableGraph, 2);
+        playableOutput.SetSourcePlayable(_generalMixerPlayable);
+        
+        _generalMixerPlayable.SetWeights(false, (0, 0), (0, 1));
+        _playableGraph.Play();
+    }
+
+    public void Play(AnimationMixerPlayable nextStateMixerPlayable, float crossFadeDuration)
+    {
+        _crossFadeDuration = crossFadeDuration;
+
+        if (IsFirstPlay())
+        {
+            HandleFirstPlay(nextStateMixerPlayable);
+            return;
+        }
+
+        var sourcePort = _activePort;
+        var targetPort = 1 - sourcePort;
+
+        if (IsCrossFading)
+        {
+            HandleInterrupt(sourcePort, targetPort);
+        }
+
+        HandlePendingCleanup(targetPort);
+
+        PrepareCrossFade(nextStateMixerPlayable, sourcePort, targetPort);
+    }
+
+    public void OnUpdate(float deltaTime, params float[] parameters)
+    {
+        CleanUp();
+        CrossFade(deltaTime);
+        SetAnimationParams(parameters);
+    }
+
+    private void CrossFade(float deltaTime)
+    {
+        if (!IsCrossFading) return;
+
+        _crossFadeTime += deltaTime;
+        var t = Mathf.Clamp01(_crossFadeTime / _crossFadeDuration);
+
+        var sourcePort = _activePort;
+        var targetPort = 1 - sourcePort;
+
+        _generalMixerPlayable.SetWeights(true, (sourcePort, 1f - t), (targetPort, t));
+
+        if (t < 1f) return;
+
+        FinishCrossFade(sourcePort, targetPort);
+    }
+
+    private void CleanUp()
+    {
+        if (!_pendingCleanup) return;
+
+        DisconnectAndDestroy(_pendingPort, _fadingOutMixer);
+
+        _pendingCleanup = false;
+        _pendingPort = -1;
+        _fadingOutMixer = default;
+    }
+
+    private void SetAnimationParams(params float[] parameters)
+    {
+        // обновляем веса клипов, подключенных к _currentMixerPlayable на основе поступающих параметров
+    }
+
+    public void Dispose()
+    {
+        _playableGraph.Destroy();
+    }
+    
+    private bool IsFirstPlay() => !_previousMixerPlayable.IsValid();
+
+    private void HandleFirstPlay(AnimationMixerPlayable nextMixer)
+    {
+        _currentMixerPlayable = nextMixer;
+        _currentMixerPlayable.NormalizeMixerWeights();
+
+        ConnectMixer(_currentMixerPlayable, 0, 0.0);
+        _generalMixerPlayable.SetWeights(false, (0, 1f));
+
+        _previousMixerPlayable = _currentMixerPlayable;
+        _activePort = 0;
+        IsCrossFading = false;
+    }
+
+    private void HandleInterrupt(int sourcePort, int targetPort)
+    {
+        _generalMixerPlayable.SetWeights(true, (sourcePort, 0f), (targetPort, 1f));
+
+        DisconnectAndDestroy(sourcePort, _previousMixerPlayable);
+
+        _activePort = targetPort;
+        _previousMixerPlayable = _currentMixerPlayable;
+        IsCrossFading = false;
+    }
+
+    private void HandlePendingCleanup(int targetPort)
+    {
+        if (_pendingCleanup && _pendingPort == targetPort)
+        {
+            DisconnectAndDestroy(_pendingPort, _fadingOutMixer);
+            _pendingCleanup = false;
+            _pendingPort = -1;
+            _fadingOutMixer = default;
+        }
+    }
+
+    private void PrepareCrossFade(AnimationMixerPlayable nextMixer, int sourcePort, int targetPort)
+    {
+        _crossFadeTime = 0f;
+        IsCrossFading = true;
+
+        _previousMixerPlayable = _currentMixerPlayable;
+        _currentMixerPlayable = nextMixer;
+        _currentMixerPlayable.NormalizeMixerWeights();
+
+        var transitionTime = _currentMixerPlayable.GetTransitionTime(_previousMixerPlayable);
+
+        ConnectMixer(_currentMixerPlayable, targetPort, transitionTime);
+        _generalMixerPlayable.SetWeights(true, (targetPort, 0f), (sourcePort, 1f));
+    }
+
+    private void FinishCrossFade(int sourcePort, int targetPort)
+    {
+        IsCrossFading = false;
+        _generalMixerPlayable.SetWeights(true, (sourcePort, 0f),(targetPort, 1f));
+
+        _fadingOutMixer = _previousMixerPlayable;
+        _pendingCleanup = true;
+        _pendingPort = sourcePort;
+        _activePort = targetPort;
+        _previousMixerPlayable = _currentMixerPlayable;
+    }
+
+    private void ConnectMixer(AnimationMixerPlayable mixer, int port, double time)
+    {
+        _playableGraph.Disconnect(_generalMixerPlayable, port);
+        _playableGraph.Connect(mixer, 0, _generalMixerPlayable, port);
+        mixer.ResetInputs(time);
+        mixer.SetTime(time);
+
+        _generalMixerPlayable.SetInputWeight(port, TinyWeight);
+        _playableGraph.Evaluate();
+    }
+
+    private void DisconnectAndDestroy(int port, AnimationMixerPlayable mixer)
+    {
+        _playableGraph.Disconnect(_generalMixerPlayable, port);
+        mixer.DestroyMixerAndInputs();
+    }
+}
