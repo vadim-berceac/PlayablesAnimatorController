@@ -20,6 +20,20 @@ MonoBehaviour:
   <CrossFadeTime>k__BackingField: 0.2
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
-  <Clips>k__BackingField:
-  - {fileID: 3094330708855449807, guid: a7b87f52da93a1047847479c0b9dc82d, type: 3}
-  - {fileID: 3094330708855449807, guid: 01d3a453c151ee14a9d75f24ad11bfbe, type: 3}
+  <ClipBlendData>k__BackingField:
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: a7b87f52da93a1047847479c0b9dc82d, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: 0
+      <Param2>k__BackingField: 1
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 01d3a453c151ee14a9d75f24ad11bfbe, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: 0
+      <Param2>k__BackingField: -1
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 71e5a632ea4b5524e81045bd9b218bce, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: -1
+      <Param2>k__BackingField: 0
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 9b80b59326455614fad1219d3339ab11, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: 1
+      <Param2>k__BackingField: 0

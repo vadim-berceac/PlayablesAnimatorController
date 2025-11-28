@@ -22,18 +22,18 @@ public abstract class State : ScriptableObject, IState
     
     [field: Space (3)]
     [field: Header("Animation Settings")]
-    [field: SerializeField] public AnimationClip[] Clips { get; set; } 
+    [field: SerializeField] public ClipBlendData[] ClipBlendData { get; set; }
     
     protected List<SwitchStateCondition<IStateMachine>> SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>();
     
     public virtual void OnEnter(IStateMachine stateMachine)
     {
         stateMachine.StatesTimer.Start(this);
-        if (Clips == null || Clips.Length == 0)
+        if (ClipBlendData == null || ClipBlendData.Length == 0)
         {
             return;
         }
-        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.PlayableGraph)
+        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.PlayableGraph), GetBlendParams()
             , stateMachine.PreviousState ? CrossFadeTime : 0);
     }
 
@@ -75,15 +75,15 @@ public abstract class State : ScriptableObject, IState
 
     private AnimationMixerPlayable GetAnimationMixerPlayable(PlayableGraph graph, int activeClipIndex = 0)
     {
-        var mixer = AnimationMixerPlayable.Create(graph, Clips.Length);
+        var mixer = AnimationMixerPlayable.Create(graph, ClipBlendData.Length);
 
-        for (var i = 0; i < Clips.Length; i++)
+        for (var i = 0; i < ClipBlendData.Length; i++)
         {
-            if (Clips[i] == null)
+            if (ClipBlendData[i].Clip == null)
             {
                 continue;
             }
-            var clipPlayable = AnimationClipPlayable.Create(graph, Clips[i]);
+            var clipPlayable = AnimationClipPlayable.Create(graph, ClipBlendData[i].Clip);
 
             graph.Connect(clipPlayable, 0, mixer, i);
           
@@ -91,6 +91,16 @@ public abstract class State : ScriptableObject, IState
         }
 
         return mixer;
+    }
+
+    private List<BlendParams> GetBlendParams()
+    {
+        var blendParams = new List<BlendParams>();
+        foreach (var b in ClipBlendData)
+        {
+            blendParams.Add(b.BlendParams);
+        }
+        return blendParams;
     }
 }
 

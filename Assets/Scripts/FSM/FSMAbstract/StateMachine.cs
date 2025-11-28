@@ -40,8 +40,7 @@ public abstract class FSMAbstract : MonoBehaviour, IStateMachine
     {
         CurrentState?.OnUpdate(this);
         StatesTransition.UpdateBlending();
-        AnimatorController.OnUpdate(Time.deltaTime);
-        //AnimatorController.SetFloat(AnimationParameters.MovementSpeed, StatesTransition.CurrentAnimationSpeed);
+        AnimatorController.OnUpdate(Time.deltaTime, InputHandler.GetMoveInput().x, InputHandler.GetMoveInput().y);
     }
 
     protected virtual void FixedUpdate()

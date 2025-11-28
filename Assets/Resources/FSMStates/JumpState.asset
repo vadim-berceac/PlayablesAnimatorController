@@ -22,3 +22,7 @@ MonoBehaviour:
   <TimeToExit>k__BackingField: 0
   <Clips>k__BackingField:
   - {fileID: 8973767263969007744, guid: 4b5cddf2c939fd34f864bd380d08a5bd, type: 3}
+  <ClipBlendData>k__BackingField:
+  - <Clip>k__BackingField: {fileID: 8973767263969007744, guid: 4b5cddf2c939fd34f864bd380d08a5bd, type: 3}
+    <Param1>k__BackingField: 0
+    <Param2>k__BackingField: 0

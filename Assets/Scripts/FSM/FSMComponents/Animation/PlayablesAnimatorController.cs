@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
@@ -9,6 +10,8 @@ public class PlayablesAnimatorController
 
     private AnimationMixerPlayable _previousMixerPlayable;
     private AnimationMixerPlayable _currentMixerPlayable;
+    
+    private List<BlendParams> _currentBlendParams = new();
 
     private float _crossFadeDuration;
     private float _crossFadeTime;
@@ -19,6 +22,11 @@ public class PlayablesAnimatorController
     private AnimationMixerPlayable _fadingOutMixer;
 
     private const float TinyWeight = 1e-6f;
+    private const float ParamSmoothing = 4f; 
+    private const float Power = 2f;
+    private const float Eps = 1e-5f;
+    private const float Threshold = 0.05f;
+    private Vector2 _smoothedParams = Vector2.zero;
 
     public PlayableGraph PlayableGraph => _playableGraph;
     public bool IsCrossFading { get; private set; }
@@ -36,8 +44,9 @@ public class PlayablesAnimatorController
         _playableGraph.Play();
     }
 
-    public void Play(AnimationMixerPlayable nextStateMixerPlayable, float crossFadeDuration)
+    public void Play(AnimationMixerPlayable nextStateMixerPlayable, List<BlendParams> blendParamsList, float crossFadeDuration)
     {
+        _currentBlendParams = blendParamsList;
         _crossFadeDuration = crossFadeDuration;
 
         if (IsFirstPlay())
@@ -63,7 +72,19 @@ public class PlayablesAnimatorController
     {
         CleanUp();
         CrossFade(deltaTime);
-        SetAnimationParams(parameters);
+        RotationSmooth(deltaTime, parameters);
+        SetAnimationParams(_smoothedParams.x, _smoothedParams.y);
+    }
+
+    private void RotationSmooth(float deltaTime, params float[] parameters)
+    {
+        var targetParams = Vector2.zero;
+        if (parameters != null && parameters.Length >= 2)
+        {
+            targetParams = new Vector2(Mathf.Clamp(parameters[0], -1f, 1f), Mathf.Clamp(parameters[1], -1f, 1f));
+        }
+      
+        _smoothedParams = Vector2.Lerp(_smoothedParams, targetParams, 1f - Mathf.Exp(-ParamSmoothing * deltaTime));
     }
 
     private void CrossFade(float deltaTime)
@@ -94,9 +115,58 @@ public class PlayablesAnimatorController
         _fadingOutMixer = default;
     }
 
-    private void SetAnimationParams(params float[] parameters)
+    private void SetAnimationParams(float x, float y)
     {
-        // обновляем веса клипов, подключенных к _currentMixerPlayable на основе поступающих параметров
+        if (!_currentMixerPlayable.IsValid()) return;
+
+        var inputCount = _currentMixerPlayable.GetInputCount();
+        if (inputCount != _currentBlendParams.Count || inputCount == 0) return;
+    
+        var weights = new float[inputCount];
+        var total = 0f;
+        var minDist = float.MaxValue;
+        var nearestIdx = -1;
+       
+        for (var i = 0; i < inputCount; i++)
+        {
+            var bp = _currentBlendParams[i];
+            var dx = x - bp.Param1;
+            var dy = y - bp.Param2;
+            var dist = Mathf.Sqrt(dx * dx + dy * dy);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearestIdx = i;
+            }
+            var w = 1f / Mathf.Pow(Mathf.Max(dist, Eps), Power);
+            weights[i] = w;
+            total += w;
+        }
+        
+        if (minDist < Threshold)
+        {
+            for (var i = 0; i < inputCount; i++)
+            {
+                _currentMixerPlayable.SetInputWeight(i, i == nearestIdx ? 1f : 0f);
+            }
+            return;
+        }
+    
+        if (total < 1e-6f)
+        {
+            var uniform = 1f / inputCount;
+            for (var i = 0; i < inputCount; i++)
+            {
+                _currentMixerPlayable.SetInputWeight(i, uniform);
+            }
+            return;
+        }
+    
+        for (var i = 0; i < inputCount; i++)
+        {
+            var normalized = weights[i] / total;
+            _currentMixerPlayable.SetInputWeight(i, normalized);
+        }
     }
 
     public void Dispose()
