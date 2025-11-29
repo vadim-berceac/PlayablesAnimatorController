@@ -8,8 +8,9 @@ public class SprintState : State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.StatesTimer.IsFinished || !c.InputHandler.GetRunInput()), c => StateType.Run),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.StatesTimer.IsFinished || !c.InputHandler.GetRunInput() 
+                                               || c.InputHandler.GetMoveInput().y <= 0), c => StateType.Run),
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
         };
     }
 }

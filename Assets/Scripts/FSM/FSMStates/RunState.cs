@@ -10,7 +10,7 @@ public class RunState : State
         {
             new(c => (!c.InputHandler.GetRunInput()), c => StateType.Walk),
             new(c => (Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed) &&
-                      c.StatesTimer.IsFinished), c => StateType.Sprint),
+                      c.StatesTimer.IsFinished) && c.InputHandler.GetMoveInput().y > 0, c => StateType.Sprint),
             new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
         };
     }

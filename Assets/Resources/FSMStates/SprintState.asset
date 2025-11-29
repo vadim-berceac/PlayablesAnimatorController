@@ -25,10 +25,6 @@ MonoBehaviour:
     <BlendParams>k__BackingField:
       <Param1>k__BackingField: 0
       <Param2>k__BackingField: 1
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7c2104b55c5eff645a37f785049bf2a2, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: -1
   - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 86dab4cdfb3f2494594e72c71d50c156, type: 3}
     <BlendParams>k__BackingField:
       <Param1>k__BackingField: 1
@@ -37,3 +33,11 @@ MonoBehaviour:
     <BlendParams>k__BackingField:
       <Param1>k__BackingField: -1
       <Param2>k__BackingField: 0
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: c61d60efa1bd11e46bc3104fd2213150, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: -0.5
+      <Param2>k__BackingField: 0.5
+  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 25969e5572a91414f8af8551ff618850, type: 3}
+    <BlendParams>k__BackingField:
+      <Param1>k__BackingField: 0.5
+      <Param2>k__BackingField: 0.5
