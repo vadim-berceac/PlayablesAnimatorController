@@ -15,10 +15,6 @@ public class Character : MonoBehaviour
     {
         _statesContainer = statesContainer;
         _playerInput = playerInput;
-    }
-
-    private void Awake()
-    {
         FullBodyFsm = new Fsm(_statesContainer, _playerInput, AnimationSettings.Animator, IsPlayerControlled);
     }
 
