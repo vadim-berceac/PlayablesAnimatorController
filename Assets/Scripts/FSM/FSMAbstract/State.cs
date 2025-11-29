@@ -33,7 +33,7 @@ public abstract class State : ScriptableObject, IState
         {
             return;
         }
-        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.PlayableGraph), GetBlendParams()
+        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.GraphCore.Graph), GetBlendParams()
             , stateMachine.PreviousState ? CrossFadeTime : 0);
     }
 

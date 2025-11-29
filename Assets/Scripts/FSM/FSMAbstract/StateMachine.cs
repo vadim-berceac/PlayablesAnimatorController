@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IStateMachine
 {
+    public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }
     public StatesContainer StatesContainer { get; set; }
     public StatesTransition StatesTransition { get; set; }
@@ -16,6 +17,7 @@ public interface IStateMachine
 
 public abstract class FSMAbstract : IStateMachine
 {
+    public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }
     public StatesContainer StatesContainer { get; set; }
     public StatesTransition StatesTransition { get; set; }
@@ -51,10 +53,5 @@ public abstract class FSMAbstract : IStateMachine
     public virtual void LateUpdate()
     {
         CurrentState?.OnLateUpdate(this);
-    }
-
-    public virtual void OnDestroy()
-    {
-        AnimatorController?.Dispose();
     }
 }

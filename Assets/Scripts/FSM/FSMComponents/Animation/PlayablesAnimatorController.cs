@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 
 public class PlayablesAnimatorController
 {
-    private PlayableGraph _playableGraph;
+    private readonly GraphCore _graphCore;
     private readonly AnimationMixerPlayable _generalMixerPlayable;
 
     private AnimationMixerPlayable _previousMixerPlayable;
@@ -28,20 +28,17 @@ public class PlayablesAnimatorController
     private const float Threshold = 0.05f;
     private Vector2 _smoothedParams = Vector2.zero;
 
-    public PlayableGraph PlayableGraph => _playableGraph;
+    public GraphCore GraphCore => _graphCore;
     public bool IsCrossFading { get; private set; }
 
-    public PlayablesAnimatorController(Animator animator)
+    public PlayablesAnimatorController(GraphCore graphCore, int graphPort)
     {
-        _playableGraph = PlayableGraph.Create("PlayableGraph");
-        var playableOutput = AnimationPlayableOutput.Create(_playableGraph, "Animation", animator);
-
-        animator.applyRootMotion = false;
-        _generalMixerPlayable = AnimationMixerPlayable.Create(_playableGraph, 2);
-        playableOutput.SetSourcePlayable(_generalMixerPlayable);
+        _graphCore = graphCore;
+       
+        _generalMixerPlayable = AnimationMixerPlayable.Create(_graphCore.Graph, 2);
+        _graphCore.LayerMixer.ConnectInput(graphPort, _generalMixerPlayable, 0);
         
         _generalMixerPlayable.SetWeights(false, (0, 0), (0, 1));
-        _playableGraph.Play();
     }
 
     public void Play(AnimationMixerPlayable nextStateMixerPlayable, List<BlendParams> blendParamsList, float crossFadeDuration)
@@ -168,11 +165,6 @@ public class PlayablesAnimatorController
             _currentMixerPlayable.SetInputWeight(i, normalized);
         }
     }
-
-    public void Dispose()
-    {
-        _playableGraph.Destroy();
-    }
     
     private bool IsFirstPlay() => !_previousMixerPlayable.IsValid();
 
@@ -240,18 +232,18 @@ public class PlayablesAnimatorController
 
     private void ConnectMixer(AnimationMixerPlayable mixer, int port, double time)
     {
-        _playableGraph.Disconnect(_generalMixerPlayable, port);
-        _playableGraph.Connect(mixer, 0, _generalMixerPlayable, port);
+        _graphCore.Graph.Disconnect(_generalMixerPlayable, port);
+        _graphCore.Graph.Connect(mixer, 0, _generalMixerPlayable, port);
         mixer.ResetInputs(time);
         mixer.SetTime(time);
 
         _generalMixerPlayable.SetInputWeight(port, TinyWeight);
-        _playableGraph.Evaluate();
+        _graphCore.Graph.Evaluate();
     }
 
     private void DisconnectAndDestroy(int port, AnimationMixerPlayable mixer)
     {
-        _playableGraph.Disconnect(_generalMixerPlayable, port);
+        _graphCore.Graph.Disconnect(_generalMixerPlayable, port);
         mixer.DestroyMixerAndInputs();
     }
 }

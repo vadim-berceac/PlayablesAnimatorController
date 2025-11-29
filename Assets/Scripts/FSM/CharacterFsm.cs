@@ -1,12 +1,12 @@
-using UnityEngine;
 
 public class Fsm : FSMAbstract
 { 
     public Fsm(StatesContainer statesContainer, PlayerInput playerInput,
-        Animator animator, bool isPlayerControlled)
+        GraphCore graphCore, int graphIndex, bool isPlayerControlled)
    {
+       GraphCore = graphCore;
        StatesContainer = statesContainer;
-       AnimatorController = new PlayablesAnimatorController(animator);
+       AnimatorController = new PlayablesAnimatorController(GraphCore, graphIndex);
        StatesTransition = new StatesTransition(this);
        StatesTimer = new StatesTimer();
 

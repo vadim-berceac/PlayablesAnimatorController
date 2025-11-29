@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
     [field: SerializeField] public bool IsPlayerControlled { get; set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; set; }
     
+    private GraphCore _graphCore;
     public Fsm FullBodyFsm { get; set; }
     private StatesContainer _statesContainer;
     private PlayerInput _playerInput;
@@ -15,7 +16,11 @@ public class Character : MonoBehaviour
     {
         _statesContainer = statesContainer;
         _playerInput = playerInput;
-        FullBodyFsm = new Fsm(_statesContainer, _playerInput, AnimationSettings.Animator, IsPlayerControlled);
+        
+        _graphCore = new GraphCore(AnimationSettings.Animator, 2);
+        FullBodyFsm = new Fsm(_statesContainer, _playerInput, _graphCore, 0, IsPlayerControlled);
+        
+        _graphCore.SetLayerWeight(0,1);
     }
 
     private void Update()
@@ -35,7 +40,7 @@ public class Character : MonoBehaviour
 
     private void OnDestroy()
     {
-        FullBodyFsm.OnDestroy();
+       _graphCore.Dispose();
     }
 }
 
