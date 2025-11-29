@@ -2,8 +2,9 @@
 public class Fsm : FSMAbstract
 { 
     public Fsm(StatesContainer statesContainer, PlayerInput playerInput,
-        GraphCore graphCore, int graphIndex, bool isPlayerControlled)
+        GraphCore graphCore, int graphIndex, SetType setType, bool isPlayerControlled)
    {
+       SetType = setType;
        GraphCore = graphCore;
        StatesContainer = statesContainer;
        AnimatorController = new PlayablesAnimatorController(GraphCore, graphIndex);

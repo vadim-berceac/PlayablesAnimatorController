@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
@@ -27,6 +26,15 @@ public class GraphCore
         if (LayerMixer.IsValid())
         {
             LayerMixer.SetInputWeight(layerIndex, Mathf.Clamp01(weight));
+        }
+    }
+
+    public void SetUpLayer(int layerIndex, AvatarMask avatarMask, bool isAdditive)
+    {
+        if (LayerMixer.IsValid() && layerIndex >= 0 && layerIndex < LayerMixer.GetInputCount())
+        {
+            LayerMixer.SetLayerAdditive((uint)layerIndex, isAdditive);
+            LayerMixer.SetLayerMaskFromAvatarMask((uint)layerIndex, avatarMask);
         }
     }
     

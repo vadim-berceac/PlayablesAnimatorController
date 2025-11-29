@@ -18,9 +18,10 @@ public class Character : MonoBehaviour
         _playerInput = playerInput;
         
         _graphCore = new GraphCore(AnimationSettings.Animator, 2);
-        FullBodyFsm = new Fsm(_statesContainer, _playerInput, _graphCore, 0, IsPlayerControlled);
+        FullBodyFsm = new Fsm(_statesContainer, _playerInput, _graphCore, 0, SetType.FullBody, IsPlayerControlled);
         
         _graphCore.SetLayerWeight(0,1);
+        _graphCore.SetUpLayer(0, _statesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
     }
 
     private void Update()

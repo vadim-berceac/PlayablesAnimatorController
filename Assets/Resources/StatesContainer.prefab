@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6512d6be074864bb27b37df23a4267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatesContainer
-  states:
-  - {fileID: 11400000, guid: 88485f826bf4cbe45a8f650604a00f4f, type: 2}
-  - {fileID: 11400000, guid: 5fd0fb33fec04844ca38b0f683449e4e, type: 2}
-  - {fileID: 11400000, guid: 0661708bc2b9cde4db05ea955edb8160, type: 2}
-  - {fileID: 11400000, guid: d2843395cedd46347bb4471d415aa7d3, type: 2}
-  - {fileID: 11400000, guid: 0f40498c51bd57b488bb6b92b3e1d1d6, type: 2}
-  - {fileID: 11400000, guid: c782147143ffe0948b4ae6dfb55fbc5d, type: 2}
+  statesSet:
+  - <SetType>k__BackingField: 1
+    <AvatarMask>k__BackingField: {fileID: 31900000, guid: b1bc73dd4e1f05a43b457aa10f781460, type: 2}
+    <States>k__BackingField:
+    - {fileID: 11400000, guid: 88485f826bf4cbe45a8f650604a00f4f, type: 2}
+    - {fileID: 11400000, guid: 5fd0fb33fec04844ca38b0f683449e4e, type: 2}
+    - {fileID: 11400000, guid: 0661708bc2b9cde4db05ea955edb8160, type: 2}
+    - {fileID: 11400000, guid: d2843395cedd46347bb4471d415aa7d3, type: 2}
+    - {fileID: 11400000, guid: 0f40498c51bd57b488bb6b92b3e1d1d6, type: 2}
+    - {fileID: 11400000, guid: c782147143ffe0948b4ae6dfb55fbc5d, type: 2}

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IStateMachine
 {
+    public SetType SetType { get; set; }
     public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }
     public StatesContainer StatesContainer { get; set; }
@@ -17,6 +18,7 @@ public interface IStateMachine
 
 public abstract class FSMAbstract : IStateMachine
 {
+    public SetType SetType { get; set; }
     public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }
     public StatesContainer StatesContainer { get; set; }
@@ -29,8 +31,7 @@ public abstract class FSMAbstract : IStateMachine
 
     public void SwitchState(StateType stateType)
     {
-        var newState = StatesContainer.GetStateByStateType(stateType);
-        
+        var newState = StatesContainer.GetStateByStateType(SetType, stateType);
         CurrentState?.OnExit(this);
         PreviousState = CurrentState;
         CurrentState = newState;
