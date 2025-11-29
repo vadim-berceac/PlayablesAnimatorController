@@ -8,16 +8,19 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     public Vector2 Move { get; set; }
     public bool Run { get; set; }
     public bool Jump { get; set; }
+    public bool Crouch { get; set; }
     
     private InputAction _moveAction;
     private InputAction _runAction;
     private InputAction _jumpAction;
+    private InputAction _crouchAction;
 
     private void Awake()
     {
         _moveAction = PlayerAction.FindAction("Move");
         _runAction = PlayerAction.FindAction("Run");
         _jumpAction = PlayerAction.FindAction("Jump");
+        _crouchAction = PlayerAction.FindAction("Crouch");
 
         Subscribe();
     }
@@ -36,6 +39,9 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _runAction.canceled += OnRunCancel;
         
         _jumpAction.performed += OnJump;
+        
+        _crouchAction.performed += OnCrouch;
+        _crouchAction.canceled += OnCrouchCancel;
     }
 
     private void Unsubscribe()
@@ -47,6 +53,9 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _runAction.canceled -= OnRunCancel;
         
         _jumpAction.performed -= OnJump;
+        
+        _crouchAction.performed -= OnCrouch;
+        _crouchAction.canceled -= OnCrouchCancel;
     }
 
     private void OnDisable()
@@ -77,5 +86,15 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     private void OnJump(InputAction.CallbackContext context)
     {
         Jump = true;
+    }
+
+    private void OnCrouch(InputAction.CallbackContext context)
+    {
+        Crouch = context.ReadValueAsButton();
+    }
+
+    private void OnCrouchCancel(InputAction.CallbackContext context)
+    {
+        Crouch = context.ReadValueAsButton();
     }
 }

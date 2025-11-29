@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &50745169 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2261822127126016115, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
-  m_PrefabInstance: {fileID: 586093366}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c409c601c9dc14f9d0ed42d4e3cda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterFSM
 --- !u!1 &149573693
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,14 +549,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 586013780885664330, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261822127126016115, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
-      propertyPath: <AnimationSettings>k__BackingField.<Fallback>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6163752327915369098, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
       propertyPath: m_Name
       value: HumanM_Model
@@ -663,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af43cdc21f0718e44b48a00cee001298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugInterface
-  <FSM>k__BackingField: {fileID: 50745169}
+  <FSM>k__BackingField: {fileID: 1039139025}
   <prevStateText>k__BackingField: {fileID: 1008402129}
   <currentStateText>k__BackingField: {fileID: 1378364465}
   <animationSpeedText>k__BackingField: {fileID: 544619644}
@@ -948,6 +929,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008402127}
   m_CullTransparentMesh: 1
+--- !u!114 &1039139025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7763562407946616943, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
+  m_PrefabInstance: {fileID: 586093366}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16de0c3de729446b4c44d564f7548d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
 --- !u!1 &1059864538
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,10 +57,6 @@ PrefabInstance:
       value: HumanM_Model
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
@@ -74,7 +70,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2261822127126016115}
+      addedObject: {fileID: 7763562407946616943}
   m_SourcePrefab: {fileID: 100100000, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
 --- !u!95 &586013780885664330 stripped
 Animator:
@@ -86,7 +82,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
   m_PrefabInstance: {fileID: 6434348385937706971}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2261822127126016115
+--- !u!114 &7763562407946616943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,10 +91,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6163752327915369098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c409c601c9dc14f9d0ed42d4e3cda4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a16de0c3de729446b4c44d564f7548d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterFSM
+  m_EditorClassIdentifier: Assembly-CSharp::Character
   <IsPlayerControlled>k__BackingField: 1
   <AnimationSettings>k__BackingField:
     <Animator>k__BackingField: {fileID: 586013780885664330}
-    <Fallback>k__BackingField: {fileID: -2576967968662016515, guid: 5462b8d1f234c61449e1baa65ba9f981, type: 3}

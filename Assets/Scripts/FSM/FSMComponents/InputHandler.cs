@@ -24,6 +24,11 @@ public class InputHandler
         return _characterInput.Jump;
     }
 
+    public bool GetCrouchInput()
+    {
+        return _characterInput.Crouch;
+    }
+    
     public void ResetBufferedInput()
     {
         _characterInput.ResetBufferedInput();

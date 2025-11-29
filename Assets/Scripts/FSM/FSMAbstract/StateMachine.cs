@@ -14,7 +14,7 @@ public interface IStateMachine
     public void SwitchState(StateType stateType);
 }
 
-public abstract class FSMAbstract : MonoBehaviour, IStateMachine
+public abstract class FSMAbstract : IStateMachine
 {
     public PlayablesAnimatorController AnimatorController { get; set; }
     public StatesContainer StatesContainer { get; set; }
@@ -36,24 +36,24 @@ public abstract class FSMAbstract : MonoBehaviour, IStateMachine
         OnStateChanged?.Invoke(PreviousState, CurrentState);
     }
 
-    protected virtual void Update()
+    public virtual void Update()
     {
         CurrentState?.OnUpdate(this);
         StatesTransition.UpdateBlending();
         AnimatorController.OnUpdate(Time.deltaTime, InputHandler.GetMoveInput().x, InputHandler.GetMoveInput().y);
     }
 
-    protected virtual void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         CurrentState?.OnFixedUpdate(this);
     }
 
-    protected virtual void LateUpdate()
+    public virtual void LateUpdate()
     {
         CurrentState?.OnLateUpdate(this);
     }
 
-    protected virtual void OnDestroy()
+    public virtual void OnDestroy()
     {
         AnimatorController?.Dispose();
     }

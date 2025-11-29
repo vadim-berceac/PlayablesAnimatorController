@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DebugInterface : MonoBehaviour
 {
-   [field: SerializeField] private FSMAbstract FSM { get; set; }
+   [field: SerializeField] private Character FSM { get; set; }
    [field: SerializeField] private Text prevStateText { get; set; }
    [field: SerializeField] private Text currentStateText { get; set; }
    [field: SerializeField] private Text animationSpeedText { get; set; }
@@ -11,13 +11,13 @@ public class DebugInterface : MonoBehaviour
 
    private void Awake()
    {
-      FSM.OnStateChanged += OnStateChanged;
-      FSM.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged;
-      FSM.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged;
+      FSM.FullBodyFsm.OnStateChanged += OnStateChanged;
+      FSM.FullBodyFsm.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged;
+      FSM.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged;
       
-      OnStateChanged(FSM.PreviousState, FSM.CurrentState);
-      OnAnimationSpeedChanged(FSM.StatesTransition.CurrentAnimationSpeed);
-      OnMovementSpeedChanged(FSM.StatesTransition.CurrentMovementSpeed);
+      OnStateChanged(FSM.FullBodyFsm.PreviousState, FSM.FullBodyFsm.CurrentState);
+      OnAnimationSpeedChanged(FSM.FullBodyFsm.StatesTransition.CurrentAnimationSpeed);
+      OnMovementSpeedChanged(FSM.FullBodyFsm.StatesTransition.CurrentMovementSpeed);
    }
 
    private void OnStateChanged(State previous, State current)
@@ -45,8 +45,8 @@ public class DebugInterface : MonoBehaviour
 
    private void OnDisable()
    {
-      FSM.OnStateChanged -= OnStateChanged;
-      FSM.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
-      FSM.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
+      FSM.FullBodyFsm.OnStateChanged -= OnStateChanged;
+      FSM.FullBodyFsm.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
+      FSM.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
    }
 }

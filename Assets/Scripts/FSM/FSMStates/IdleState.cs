@@ -9,6 +9,7 @@ public class IdleState : State
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
             new(c => (c.InputHandler.GetMoveInput().magnitude > 0.05f), c => StateType.Walk),
+            new(c => (c.InputHandler.GetCrouchInput()), c => StateType.Crouch),
             new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
         };
     }

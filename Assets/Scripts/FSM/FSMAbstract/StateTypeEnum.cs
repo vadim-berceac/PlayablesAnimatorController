@@ -5,5 +5,6 @@ public enum StateType
     Walk,
     Run,
     Sprint,
-    Jump
+    Jump,
+    Crouch,
 }
