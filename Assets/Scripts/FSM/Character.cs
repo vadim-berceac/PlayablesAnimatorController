@@ -9,16 +9,20 @@ public class Character : MonoBehaviour
     private GraphCore _graphCore;
     public Fsm FullBodyFsm { get; set; }
     private StatesContainer _statesContainer;
-    private PlayerInput _playerInput;
+    private InputHandler _inputHandler;
 
     [Inject]
     private void Construct(StatesContainer statesContainer, PlayerInput playerInput)
     {
-        _statesContainer = statesContainer;
-        _playerInput = playerInput;
+        if (IsPlayerControlled)
+        {
+            _inputHandler = new InputHandler(playerInput);
+        }
         
-        _graphCore = new GraphCore(AnimationSettings.Animator, 2);
-        FullBodyFsm = new Fsm(_statesContainer, _playerInput, _graphCore, 0, SetType.FullBody, IsPlayerControlled);
+        _statesContainer = statesContainer;
+        
+        _graphCore = new GraphCore(AnimationSettings.Animator, 3);
+        FullBodyFsm = new Fsm(_statesContainer, _inputHandler, _graphCore, 0, SetType.FullBody);
         
         _graphCore.SetLayerWeight(0,1);
         _graphCore.SetUpLayer(0, _statesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
