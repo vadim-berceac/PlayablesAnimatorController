@@ -14,6 +14,7 @@ public interface IStateMachine
     public State PreviousState { get; set; }
     
     public void SwitchState(StateType stateType);
+    public void SetStatesTransition(StatesTransition transition);
 }
 
 public abstract class FSMAbstract : IStateMachine
@@ -29,6 +30,11 @@ public abstract class FSMAbstract : IStateMachine
     public State PreviousState { get; set; }
     public Action <State, State> OnStateChanged { get; set; }
 
+    public void SetStatesTransition(StatesTransition transition)
+    {
+        StatesTransition = transition;
+    }
+
     public void SwitchState(StateType stateType)
     {
         var newState = StatesContainer.GetStateByStateType(SetType, stateType);
@@ -42,7 +48,6 @@ public abstract class FSMAbstract : IStateMachine
     public virtual void Update()
     {
         CurrentState?.OnUpdate(this);
-        StatesTransition.UpdateBlending();
         AnimatorController.OnUpdate(Time.deltaTime, InputHandler.GetMoveInput().x, InputHandler.GetMoveInput().y);
     }
 

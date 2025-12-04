@@ -11,10 +11,9 @@ public class Fsm : FSMAbstract
        StatesContainer = statesContainer;
        InputHandler = inputHandler;
        AnimatorController = new PlayablesAnimatorController(GraphCore, graphIndex);
-       StatesTransition = new StatesTransition(this);
        StatesTimer = new StatesTimer();
        
-       SwitchState(StateType.Idle);
+       SwitchState(statesContainer.GetStartStateType(SetType));
     }
 
     public void ConnectToMultipleLayers(List<(int layerIndex, AvatarMask mask, bool isAdditive)> layerConfigs)

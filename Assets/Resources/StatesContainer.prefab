@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatesContainer
   statesSet:
   - <SetType>k__BackingField: 1
+    <StartStateIndex>k__BackingField: 0
     <AvatarMask>k__BackingField: {fileID: 31900000, guid: b1bc73dd4e1f05a43b457aa10f781460, type: 2}
     <States>k__BackingField:
     - {fileID: 11400000, guid: 88485f826bf4cbe45a8f650604a00f4f, type: 2}
@@ -54,3 +55,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d2843395cedd46347bb4471d415aa7d3, type: 2}
     - {fileID: 11400000, guid: 0f40498c51bd57b488bb6b92b3e1d1d6, type: 2}
     - {fileID: 11400000, guid: c782147143ffe0948b4ae6dfb55fbc5d, type: 2}
+  - <SetType>k__BackingField: 2
+    <StartStateIndex>k__BackingField: 0
+    <AvatarMask>k__BackingField: {fileID: 31900000, guid: 37ea55a5fdbc36b45b75747e3460f37d, type: 2}
+    <States>k__BackingField: []

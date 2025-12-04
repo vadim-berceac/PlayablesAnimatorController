@@ -19,6 +19,12 @@ public class StatesContainer : MonoBehaviour
         return statesSet.Any(s => s.States.GroupBy(x => x.StateType).Any(g => g.Count() > 1));
     }
 
+    public StateType GetStartStateType(SetType setType)
+    {
+        var set = statesSet.FirstOrDefault(s => s.SetType == setType);
+        return set.States[set.StartStateIndex].StateType;
+    }
+
     public State GetStateByStateType(SetType setType, StateType stateType)
     {
         return statesSet
@@ -37,6 +43,7 @@ public class StatesContainer : MonoBehaviour
 public struct StatesSet
 {
     [field: SerializeField] public SetType SetType { get; set; }
+    [field: SerializeField] public int StartStateIndex { get; set; }
     [field: SerializeField] public AvatarMask AvatarMask { get; private set; }
     [field: SerializeField] public State[] States { get; set; }
 }
