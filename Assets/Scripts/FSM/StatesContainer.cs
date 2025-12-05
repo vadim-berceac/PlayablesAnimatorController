@@ -52,5 +52,6 @@ public enum SetType
 {
     None,
     FullBody,
-    UpperBody
+    UpperBody,
+    Hands
 }

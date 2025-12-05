@@ -65,20 +65,22 @@ public class PlayablesAnimatorController
         PrepareCrossFade(nextStateMixerPlayable, sourcePort, targetPort);
     }
     
-    public void ConnectToMultipleLayers(List<(int layerIndex, AvatarMask mask, bool isAdditive)> layerConfigs)
+    public void ConnectToMultipleLayers(List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive)> layerConfigs)
     {
         if (!_generalMixerPlayable.IsValid()) return;
+        _generalMixerPlayable.SetOutputCount(layerConfigs.Count + 1);
 
         foreach (var config in layerConfigs)
         {
-            var layerIndex = config.layerIndex;
+            var layerIndex = config.graphPortIndex;
+            var outputPortIndex = config.outputPortIndex;
             var mask = config.mask;
             var isAdditive = config.isAdditive;
             
             _graphCore.SetUpLayer(layerIndex, mask, isAdditive);
             
             _graphCore.Graph.Disconnect(_graphCore.LayerMixer, layerIndex); 
-            _graphCore.Graph.Connect(_generalMixerPlayable, 0, _graphCore.LayerMixer, layerIndex); 
+            _graphCore.Graph.Connect(_generalMixerPlayable, outputPortIndex, _graphCore.LayerMixer, layerIndex); 
 
             _graphCore.SetLayerWeight(layerIndex, isAdditive ? 0f : 1f); 
         }
