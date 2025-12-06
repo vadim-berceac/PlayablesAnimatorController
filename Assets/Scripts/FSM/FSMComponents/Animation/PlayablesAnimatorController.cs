@@ -28,6 +28,8 @@ public class PlayablesAnimatorController
     private const float Threshold = 0.05f;
     private Vector2 _smoothedParams = Vector2.zero;
 
+    private List<int> _connectedLayerIndices = new();
+
     public GraphCore GraphCore => _graphCore;
     public bool IsCrossFading { get; private set; }
 
@@ -70,6 +72,8 @@ public class PlayablesAnimatorController
         if (!_generalMixerPlayable.IsValid()) return;
         _generalMixerPlayable.SetOutputCount(layerConfigs.Count + 1);
 
+        _connectedLayerIndices.Clear();
+
         foreach (var config in layerConfigs)
         {
             var layerIndex = config.graphPortIndex;
@@ -82,7 +86,9 @@ public class PlayablesAnimatorController
             _graphCore.Graph.Disconnect(_graphCore.LayerMixer, layerIndex); 
             _graphCore.Graph.Connect(_generalMixerPlayable, outputPortIndex, _graphCore.LayerMixer, layerIndex); 
 
-            _graphCore.SetLayerWeight(layerIndex, isAdditive ? 0f : 1f); 
+            _graphCore.SetLayerWeight(layerIndex, isAdditive ? 0.3f : 1f); 
+
+            _connectedLayerIndices.Add(layerIndex);
         }
         _graphCore.Graph.Evaluate(); 
     }

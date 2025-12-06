@@ -6,64 +6,67 @@ public class Character : MonoBehaviour
 {
     [field: SerializeField] public bool IsPlayerControlled { get; set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; set; }
-
-    private StatesTransition _statesTransition;
-    private GraphCore _graphCore;
+   
     public Fsm FullBodyFsm { get; set; }
     public Fsm UpperBodyFsm { get; set; }
-    private StatesContainer _statesContainer;
-    private InputHandler _inputHandler;
+    public StatesTransition StatesTransition { get; set; }
+    public GraphCore GraphCore { get; set; }
+    public StatesContainer StatesContainer { get; set; }
+    public InputHandler InputHandler { get; set; }
 
     [Inject]
     private void Construct(StatesContainer statesContainer, PlayerInput playerInput)
     {
         if (IsPlayerControlled)
         {
-            _inputHandler = new InputHandler(playerInput);
+            InputHandler = new InputHandler(playerInput);
         }
         
-        _statesContainer = statesContainer;
-        _graphCore = new GraphCore(AnimationSettings.Animator, 3);
+        StatesContainer = statesContainer;
+        GraphCore = new GraphCore(AnimationSettings.Animator, 3);
         
-        FullBodyFsm = new Fsm(_statesContainer, _inputHandler, _graphCore, 0, SetType.FullBody);
-        _graphCore.SetUpLayer(0, _statesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
-        _graphCore.SetLayerWeight(0,1);
+        FullBodyFsm = new Fsm(this, 0, SetType.FullBody);
+        GraphCore.SetUpLayer(0, StatesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
+        GraphCore.SetLayerWeight(0,1);
         
-        _statesTransition = new StatesTransition(FullBodyFsm);
-        FullBodyFsm.SetStatesTransition(_statesTransition);
+        StatesTransition = new StatesTransition(FullBodyFsm);
+        FullBodyFsm.SetStatesTransition(StatesTransition);
         
         //тестовая стейт машина для верха тела
-        UpperBodyFsm = new Fsm(_statesContainer, _inputHandler, _graphCore, 1, SetType.UpperBody);
-        _graphCore.SetUpLayer(1, _statesContainer.GetAvatarMaskBySetType(SetType.UpperBody), false);
+        UpperBodyFsm = new Fsm(this, 1, SetType.UpperBody);
+        GraphCore.SetUpLayer(1, StatesContainer.GetAvatarMaskBySetType(SetType.UpperBody), false);
         var layerConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive)>
         {
-            (1, 0, _statesContainer.GetAvatarMaskBySetType(SetType.UpperBody), true),
-            (2, 1, _statesContainer.GetAvatarMaskBySetType(SetType.Hands), false)
+            (1, 0, StatesContainer.GetAvatarMaskBySetType(SetType.UpperBody), true),
+            (2, 1, StatesContainer.GetAvatarMaskBySetType(SetType.Hands), false)
         };
         UpperBodyFsm.ConnectToMultipleLayers(layerConfigs);
-        _graphCore.SetLayerWeight(1,1);
-        UpperBodyFsm.SetStatesTransition(_statesTransition);
+        GraphCore.SetLayerWeight(1,1);
+        UpperBodyFsm.SetStatesTransition(StatesTransition);
     }
 
     private void Update()
     {
         FullBodyFsm.Update();
-        _statesTransition.UpdateBlending();
+        UpperBodyFsm.Update();
+        StatesTransition.UpdateBlending();
     }
 
     private void FixedUpdate()
     {
         FullBodyFsm.FixedUpdate();
+        UpperBodyFsm.FixedUpdate();
     }
 
     private void LateUpdate()
     {
         FullBodyFsm.LateUpdate();
+        UpperBodyFsm.LateUpdate();
     }
 
     private void OnDestroy()
     {
-       _graphCore.Dispose();
+       GraphCore.Dispose();
     }
 }
 

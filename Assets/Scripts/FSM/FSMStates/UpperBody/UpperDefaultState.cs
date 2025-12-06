@@ -8,7 +8,7 @@ public class UpperDefaultState: State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            
+            new(c => (c.StatesTimer.IsFinished), c => c.PreviousState.StateType),
         };
     }
 }

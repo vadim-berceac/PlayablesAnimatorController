@@ -17,9 +17,10 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 0
   <AnimationSpeed>k__BackingField: 1
   <EnterBlendSpeed>k__BackingField: 2
-  <CrossFadeTime>k__BackingField: 0.5
-  <TimerStartMode>k__BackingField: 0
+  <CrossFadeTime>k__BackingField: 0.1
+  <TimerStartMode>k__BackingField: 2
   <TimeToExit>k__BackingField: 0
+  <ResetBufferedInput>k__BackingField: 0
   <ClipBlendData>k__BackingField:
   - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 044a070e9bc32444c914ede1654b886e, type: 3}
     <BlendParams>k__BackingField:

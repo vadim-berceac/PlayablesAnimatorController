@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fsm : FSMAbstract
-{ 
-    public Fsm(StatesContainer statesContainer, InputHandler inputHandler, GraphCore graphCore, int graphPortIndex, SetType setType)
+{
+    private readonly Character _character;
+    public Character Character => _character;
+    public Fsm (Character character, int graphPortIndex, SetType setType)
     {
        SetType = setType;
-       GraphCore = graphCore;
-       StatesContainer = statesContainer;
-       InputHandler = inputHandler;
+        _character = character;
+       GraphCore = character.GraphCore;
+       StatesContainer = character.StatesContainer;
+       InputHandler = character.InputHandler;
        AnimatorController = new PlayablesAnimatorController(GraphCore, graphPortIndex);
        StatesTimer = new StatesTimer();
        
-       SwitchState(statesContainer.GetStartStateType(SetType));
+       SwitchState(character.StatesContainer.GetStartStateType(SetType));
     }
 
     public void ConnectToMultipleLayers(List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive)> layerConfigs)

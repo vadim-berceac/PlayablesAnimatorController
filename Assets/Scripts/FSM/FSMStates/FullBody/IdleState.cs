@@ -10,6 +10,7 @@ public class IdleState : State
         {
             new(c => (c.InputHandler.GetMoveInput().magnitude > 0.05f), c => StateType.Walk),
             new(c => (c.InputHandler.GetCrouchInput()), c => StateType.Crouch),
+            //new(c => (c.InputHandler.GetJumpInput()) && c.SetType == SetType.UpperBody, c => StateType.UpperDefault),
             new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
         };
     }

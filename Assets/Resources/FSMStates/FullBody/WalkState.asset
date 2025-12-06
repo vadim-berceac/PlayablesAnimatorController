@@ -20,6 +20,7 @@ MonoBehaviour:
   <CrossFadeTime>k__BackingField: 0.2
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
+  <ResetBufferedInput>k__BackingField: 1
   <ClipBlendData>k__BackingField:
   - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: a7b87f52da93a1047847479c0b9dc82d, type: 3}
     <BlendParams>k__BackingField:

@@ -19,6 +19,7 @@ public abstract class State : ScriptableObject, IState
     [field: Header("Timer Settings")]
     [field: SerializeField] public TimerStartMode TimerStartMode { get; set; }
     [field: SerializeField] public float TimeToExit { get; set; }
+    [field: SerializeField] public bool ResetBufferedInput { get; set; } = true;
     
     [field: Space (3)]
     [field: Header("Animation Settings")]
@@ -35,6 +36,11 @@ public abstract class State : ScriptableObject, IState
         }
         stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.GraphCore.Graph), GetBlendParams()
             , stateMachine.PreviousState ? CrossFadeTime : 0);
+
+        if (ResetBufferedInput)
+        {
+            stateMachine.InputHandler.ResetBufferedInput();
+        }
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)
@@ -70,7 +76,6 @@ public abstract class State : ScriptableObject, IState
     public virtual void OnExit(IStateMachine stateMachine)
     {
         stateMachine.StatesTimer.Reset();
-        stateMachine.InputHandler.ResetBufferedInput();
     }
 
     private AnimationMixerPlayable GetAnimationMixerPlayable(PlayableGraph graph, int activeClipIndex = 0)

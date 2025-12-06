@@ -867,6 +867,10 @@ MonoBehaviour:
   <currentStateText>k__BackingField: {fileID: 1378364465}
   <animationSpeedText>k__BackingField: {fileID: 544619644}
   <movementSpeedText>k__BackingField: {fileID: 149573695}
+  <prevStateText0>k__BackingField: {fileID: 846615719}
+  <currentStateText0>k__BackingField: {fileID: 1062831096}
+  <animationSpeedText0>k__BackingField: {fileID: 1322991459}
+  <movementSpeedText0>k__BackingField: {fileID: 583400114}
 --- !u!1 &655434567
 GameObject:
   m_ObjectHideFlags: 0
