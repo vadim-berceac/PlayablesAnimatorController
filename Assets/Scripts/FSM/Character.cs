@@ -7,12 +7,13 @@ public class Character : MonoBehaviour
     [field: SerializeField] public bool IsPlayerControlled { get; set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; set; }
    
-    public Fsm FullBodyFsm { get; set; }
-    public Fsm UpperBodyFsm { get; set; }
-    public StatesTransition StatesTransition { get; set; }
-    public GraphCore GraphCore { get; set; }
-    public StatesContainer StatesContainer { get; set; }
-    public InputHandler InputHandler { get; set; }
+    public Fsm FullBodyFsm { get; private set; }
+    public Fsm UpperBodyFsm { get; private set; }
+    public GraphCore GraphCore { get; private set; }
+    public StatesContainer StatesContainer { get; private set; }
+    public InputHandler InputHandler { get; private set; }
+    
+    private StatesTransition _statesTransition;
 
     [Inject]
     private void Construct(StatesContainer statesContainer, PlayerInput playerInput)
@@ -29,8 +30,8 @@ public class Character : MonoBehaviour
         GraphCore.SetUpLayer(0, StatesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
         GraphCore.SetLayerWeight(0,1);
         
-        StatesTransition = new StatesTransition(FullBodyFsm);
-        FullBodyFsm.SetStatesTransition(StatesTransition);
+        _statesTransition = new StatesTransition(FullBodyFsm);
+        FullBodyFsm.SetStatesTransition(_statesTransition);
         
         //тестовая стейт машина для верха тела
         UpperBodyFsm = new Fsm(this, 1, SetType.UpperBody);
@@ -42,14 +43,14 @@ public class Character : MonoBehaviour
         };
         UpperBodyFsm.ConnectToMultipleLayers(layerConfigs);
         GraphCore.SetLayerWeight(1,1);
-        UpperBodyFsm.SetStatesTransition(StatesTransition);
+        UpperBodyFsm.SetStatesTransition(_statesTransition);
     }
 
     private void Update()
     {
         FullBodyFsm.Update();
         UpperBodyFsm.Update();
-        StatesTransition.UpdateBlending();
+        _statesTransition.UpdateBlending();
     }
 
     private void FixedUpdate()
