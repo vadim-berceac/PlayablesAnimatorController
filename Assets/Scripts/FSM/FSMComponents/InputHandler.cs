@@ -28,6 +28,11 @@ public class InputHandler
     {
         return _characterInput.Crouch;
     }
+
+    public bool GetDrawInput()
+    {
+        return _characterInput.Draw;
+    }
     
     public void ResetBufferedInput()
     {

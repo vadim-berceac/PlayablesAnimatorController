@@ -21,40 +21,42 @@ MonoBehaviour:
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
   <ResetBufferedInput>k__BackingField: 1
-  <ClipBlendData>k__BackingField:
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: f0138ff3bd517d54180bfa5883d767dd, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: 1
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: eef1f1bb8d6b19f499d94972262d75d3, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -0.5
-      <Param2>k__BackingField: 0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: b09ec048ea90ac245afef3acf445ccec, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0.5
-      <Param2>k__BackingField: 0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: ce5cc3cdea2b57748ba62771d875a992, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -1
-      <Param2>k__BackingField: 0
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 75f30c6372ac26c4eb3b18f4eb653105, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 1
-      <Param2>k__BackingField: 0
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 04b53cbbf3ad1664cb181d9d369d8064, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: -1
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 0b23d77b44132f347a9c21ae9e365083, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -0.5
-      <Param2>k__BackingField: -0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: fed0d55d569291d4681a714793e99fbf, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0.5
-      <Param2>k__BackingField: -0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: e21602479c359d44ca5ac29adb3f0b1a, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: 0
+  <LinkToWeaponIndex>k__BackingField: 0
+  <ClipBlendDataCollections>k__BackingField:
+  - <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: f0138ff3bd517d54180bfa5883d767dd, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 1
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: eef1f1bb8d6b19f499d94972262d75d3, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -0.5
+        <Param2>k__BackingField: 0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: b09ec048ea90ac245afef3acf445ccec, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0.5
+        <Param2>k__BackingField: 0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: ce5cc3cdea2b57748ba62771d875a992, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -1
+        <Param2>k__BackingField: 0
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 75f30c6372ac26c4eb3b18f4eb653105, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 1
+        <Param2>k__BackingField: 0
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 04b53cbbf3ad1664cb181d9d369d8064, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: -1
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 0b23d77b44132f347a9c21ae9e365083, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -0.5
+        <Param2>k__BackingField: -0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: fed0d55d569291d4681a714793e99fbf, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0.5
+        <Param2>k__BackingField: -0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: e21602479c359d44ca5ac29adb3f0b1a, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 0

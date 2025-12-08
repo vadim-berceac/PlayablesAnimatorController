@@ -7,6 +7,7 @@ public interface ICharacterInput
     public bool Run { get; set; }
     public bool Jump { get; set; }
     public bool Crouch { get; set; }
+    public bool Draw { get; set; }
     
     public void ResetBufferedInput();
 }

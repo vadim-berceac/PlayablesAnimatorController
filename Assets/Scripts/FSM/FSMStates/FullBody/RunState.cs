@@ -11,7 +11,8 @@ public class RunState : State
             new(c => (!c.InputHandler.GetRunInput()), c => StateType.Walk),
             new(c => (Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed) &&
                       c.StatesTimer.IsFinished) && c.InputHandler.GetMoveInput().y > 0, c => StateType.Sprint),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody), c => StateType.Jump),
         };
     }
 }

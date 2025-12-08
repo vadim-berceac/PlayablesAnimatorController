@@ -10,7 +10,8 @@ public class SprintState : State
         {
             new(c => (c.StatesTimer.IsFinished || !c.InputHandler.GetRunInput() 
                                                || c.InputHandler.GetMoveInput().y <= 0), c => StateType.Run),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody), c => StateType.Jump),
         };
     }
 }

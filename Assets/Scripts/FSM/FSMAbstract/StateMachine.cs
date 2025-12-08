@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IStateMachine
 {
+    public Character Character { get; set;}
     public SetType SetType { get; set; }
     public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }
@@ -19,6 +20,7 @@ public interface IStateMachine
 
 public abstract class FSMAbstract : IStateMachine
 {
+    public Character Character { get; set;}
     public SetType SetType { get; set; }
     public GraphCore GraphCore { get; set; }
     public PlayablesAnimatorController AnimatorController { get; set; }

@@ -12,7 +12,8 @@ public class WalkState : State
                       Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed)), c => StateType.Run),
             new(c => (Mathf.Approximately(c.InputHandler.GetMoveInput().magnitude, 0)), c => StateType.Idle),
             new(c => (c.InputHandler.GetCrouchInput()), c => StateType.Crouch),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump)
+            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody), c => StateType.Jump),
         };
     }
 }

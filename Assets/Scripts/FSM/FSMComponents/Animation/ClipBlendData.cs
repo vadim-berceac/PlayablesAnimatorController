@@ -8,6 +8,12 @@ public struct ClipBlendData
 }
 
 [System.Serializable]
+public struct ClipBlendDataCollection
+{
+    [field: SerializeField] public ClipBlendData[] ClipsBlendData { get; private set; }
+}
+
+[System.Serializable]
 public struct BlendParams
 {
     [field: SerializeField, Range (-1, 1)] public float Param1 { get; private set; }

@@ -9,11 +9,13 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     public bool Run { get; set; }
     public bool Jump { get; set; }
     public bool Crouch { get; set; }
+    public bool Draw { get; set; }
     
     private InputAction _moveAction;
     private InputAction _runAction;
     private InputAction _jumpAction;
     private InputAction _crouchAction;
+    private InputAction _drawAction;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _runAction = PlayerAction.FindAction("Run");
         _jumpAction = PlayerAction.FindAction("Jump");
         _crouchAction = PlayerAction.FindAction("Crouch");
+        _drawAction = PlayerAction.FindAction("Draw");
 
         Subscribe();
     }
@@ -28,6 +31,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     public void ResetBufferedInput()
     {
         Jump = false;
+        Draw = false;
     }
 
     private void Subscribe()
@@ -39,6 +43,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _runAction.canceled += OnRunCancel;
         
         _jumpAction.performed += OnJump;
+        _drawAction.performed += OnDraw;
         
         _crouchAction.performed += OnCrouch;
         _crouchAction.canceled += OnCrouchCancel;
@@ -86,6 +91,11 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     private void OnJump(InputAction.CallbackContext context)
     {
         Jump = true;
+    }
+
+    private void OnDraw(InputAction.CallbackContext context)
+    {
+        Draw = true;
     }
 
     private void OnCrouch(InputAction.CallbackContext context)

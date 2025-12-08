@@ -22,21 +22,23 @@ public class StatesTimer
         _isActive = _duration >= 0f;
     }
 
-    public void Start(State state)
+    public void Start(State state, int collectionIndex)
     {
+        var collection = state.ClipBlendDataCollections[collectionIndex];
         switch (state.TimerStartMode)
         {
             case TimerStartMode.None: SetDuration(0f); break;
             case TimerStartMode.StateValue : SetDuration(state.TimeToExit); break;
             case TimerStartMode.NonLoopiedAnimationLenght:
             {
-                if (state.ClipBlendData[0].Clip == null || state.ClipBlendData[0].Clip.length == 0 || state.ClipBlendData[0].Clip.isLooping)
+                if (collection.ClipsBlendData[0].Clip == null || collection.ClipsBlendData[0].Clip.length == 0 
+                                                              || collection.ClipsBlendData[0].Clip.isLooping)
                 {
                     SetDuration(0f);
                 }
                 else
                 {
-                    SetDuration(state.ClipBlendData[0].Clip.length);
+                    SetDuration(collection.ClipsBlendData[0].Clip.length);
                 }
             };
                 break;

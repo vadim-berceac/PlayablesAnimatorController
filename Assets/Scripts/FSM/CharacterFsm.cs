@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Fsm : FSMAbstract
 {
-    private readonly Character _character;
-    public Character Character => _character;
     public Fsm (Character character, int graphPortIndex, SetType setType)
     {
        SetType = setType;
-        _character = character;
+       Character = character;
        GraphCore = character.GraphCore;
        StatesContainer = character.StatesContainer;
        InputHandler = character.InputHandler;

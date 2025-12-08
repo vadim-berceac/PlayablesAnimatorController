@@ -21,8 +21,10 @@ MonoBehaviour:
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
   <ResetBufferedInput>k__BackingField: 1
-  <ClipBlendData>k__BackingField:
-  - <Clip>k__BackingField: {fileID: -2576967968662016515, guid: d133acc0968d55243a6f127bc0fe26a3, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: 0
+  <LinkToWeaponIndex>k__BackingField: 1
+  <ClipBlendDataCollections>k__BackingField:
+  - <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: -2576967968662016515, guid: d133acc0968d55243a6f127bc0fe26a3, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 0

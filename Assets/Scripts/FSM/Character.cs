@@ -5,6 +5,7 @@ using Zenject;
 public class Character : MonoBehaviour
 {
     [field: SerializeField] public bool IsPlayerControlled { get; set; }
+    [field: SerializeField] public Inventory Inventory { get; set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; set; }
    
     public Fsm FullBodyFsm { get; private set; }

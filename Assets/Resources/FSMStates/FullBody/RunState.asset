@@ -21,36 +21,38 @@ MonoBehaviour:
   <TimerStartMode>k__BackingField: 1
   <TimeToExit>k__BackingField: 7.5
   <ResetBufferedInput>k__BackingField: 1
-  <ClipBlendData>k__BackingField:
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: f07aa61f10f6d3d4e9bf28961576e017, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: 1
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7c2104b55c5eff645a37f785049bf2a2, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0
-      <Param2>k__BackingField: -1
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: de52662ac421752448dfded758a1d43d, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -1
-      <Param2>k__BackingField: 0
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7a3b32e957198124099a219b745792ed, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 1
-      <Param2>k__BackingField: 0
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: b2f42794b67db434fafeae0bd09add61, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0.5
-      <Param2>k__BackingField: 0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: a8398f96b66b32043b75f202eb1dde37, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -0.5
-      <Param2>k__BackingField: 0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 6017ae0dbfc5d9444926de8c55b20b1e, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: -0.5
-      <Param2>k__BackingField: -0.5
-  - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 3423935bc1db3f34a9c0f2115242a632, type: 3}
-    <BlendParams>k__BackingField:
-      <Param1>k__BackingField: 0.5
-      <Param2>k__BackingField: -0.5
+  <LinkToWeaponIndex>k__BackingField: 1
+  <ClipBlendDataCollections>k__BackingField:
+  - <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: f07aa61f10f6d3d4e9bf28961576e017, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 1
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7c2104b55c5eff645a37f785049bf2a2, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: -1
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: de52662ac421752448dfded758a1d43d, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -1
+        <Param2>k__BackingField: 0
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7a3b32e957198124099a219b745792ed, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 1
+        <Param2>k__BackingField: 0
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: b2f42794b67db434fafeae0bd09add61, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0.5
+        <Param2>k__BackingField: 0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: a8398f96b66b32043b75f202eb1dde37, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -0.5
+        <Param2>k__BackingField: 0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 6017ae0dbfc5d9444926de8c55b20b1e, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: -0.5
+        <Param2>k__BackingField: -0.5
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 3423935bc1db3f34a9c0f2115242a632, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0.5
+        <Param2>k__BackingField: -0.5
