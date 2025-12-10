@@ -12,9 +12,9 @@ public class DrawState: State
         };
     }
 
-    public override void OnExit(IStateMachine stateMachine)
+    public override void OnEnter(IStateMachine stateMachine)
     {
-        base.OnExit(stateMachine);
         stateMachine.Character.Inventory.SetWeaponDraw(true);
+        base.OnEnter(stateMachine);
     }
 }
