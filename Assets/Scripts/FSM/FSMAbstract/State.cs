@@ -30,7 +30,7 @@ public abstract class State : ScriptableObject, IState
     
     public virtual void OnEnter(IStateMachine stateMachine)
     {
-        var collectionIndex = LinkToWeaponIndex? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
+        var collectionIndex = LinkToWeaponIndex ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
         stateMachine.StatesTimer.Start(this, collectionIndex);
         var clipBlendDataCollection = ClipBlendDataCollections[collectionIndex];
         if (clipBlendDataCollection.ClipsBlendData == null || clipBlendDataCollection.ClipsBlendData.Length == 0)

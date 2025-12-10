@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcbda6680d37284285cc04a89db0edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  weaponInHandsAnimationIndex: 0
+  weaponInHandsAnimationIndex: 1
 --- !u!114 &7763562407946616943
 MonoBehaviour:
   m_ObjectHideFlags: 0

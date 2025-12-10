@@ -28,3 +28,13 @@ MonoBehaviour:
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+  - <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 25da021ab9c09bd43ab3c465f2702d4f, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 0
+  - <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: ea4124a534b08f74389d0795fcba7d1c, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 0

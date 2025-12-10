@@ -968,9 +968,9 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 157744
-  packageName: Human Basic Motions
-  packageVersion: 2.4
-  assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Male/Movement/Walk/RootMotion/HumanM@Walk01_Left
+  productId: 151650
+  packageName: Human Melee Animations
+  packageVersion: 2.0.2
+  assetPath: Assets/Packs/Kevin Iglesias/Human Animations/Animations/Male/Movement/Walk/RootMotion/HumanM@Walk01_Left
     [RM].fbx
-  uploadId: 762144
+  uploadId: 824648
