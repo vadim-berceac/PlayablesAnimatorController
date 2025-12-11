@@ -16,5 +16,6 @@ public class UnDrawState: State
     {
         base.OnExit(stateMachine);
         stateMachine.Character.Inventory.SetWeaponDraw(false);
+        stateMachine.Character.FullBodyFsm.SwitchAnimation();
     }
 }

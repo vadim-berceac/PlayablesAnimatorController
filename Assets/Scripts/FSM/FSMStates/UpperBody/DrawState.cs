@@ -16,5 +16,7 @@ public class DrawState: State
     {
         stateMachine.Character.Inventory.SetWeaponDraw(true);
         base.OnEnter(stateMachine);
+        
+        stateMachine.Character.FullBodyFsm.SwitchAnimation();
     }
 }
