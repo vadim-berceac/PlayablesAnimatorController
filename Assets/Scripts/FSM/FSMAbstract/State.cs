@@ -30,17 +30,7 @@ public abstract class State : ScriptableObject, IState
     
     public virtual void OnEnter(IStateMachine stateMachine)
     {
-        var collectionIndex = LinkToWeaponIndex && stateMachine.Character.Inventory.IsWeaponDraw 
-            ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
-        stateMachine.StatesTimer.Start(this, collectionIndex);
-        var clipBlendDataCollection = ClipBlendDataCollections[collectionIndex];
-        if (clipBlendDataCollection.ClipsBlendData == null || clipBlendDataCollection.ClipsBlendData.Length == 0)
-        {
-            return;
-        }
-        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.GraphCore.Graph,
-                clipBlendDataCollection.ClipsBlendData), GetBlendParams(clipBlendDataCollection.ClipsBlendData)
-            , stateMachine.PreviousState ? CrossFadeTime : 0);
+        SwitchAnimation(stateMachine);
 
         if (ResetBufferedInput)
         {
@@ -82,8 +72,23 @@ public abstract class State : ScriptableObject, IState
     {
         stateMachine.StatesTimer.Reset();
     }
+    
+    public void SwitchAnimation(IStateMachine stateMachine)
+    {
+        var collectionIndex = LinkToWeaponIndex && stateMachine.Character.Inventory.IsWeaponDraw 
+            ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
+        stateMachine.StatesTimer.Start(this, collectionIndex);
+        var clipBlendDataCollection = ClipBlendDataCollections[collectionIndex];
+        if (clipBlendDataCollection.ClipsBlendData == null || clipBlendDataCollection.ClipsBlendData.Length == 0)
+        {
+            return;
+        }
+        stateMachine.AnimatorController.Play(GetAnimationMixerPlayable(stateMachine.AnimatorController.GraphCore.Graph,
+                clipBlendDataCollection.ClipsBlendData), GetBlendParams(clipBlendDataCollection.ClipsBlendData)
+            , stateMachine.PreviousState ? CrossFadeTime : 0);
+    }
 
-    private AnimationMixerPlayable GetAnimationMixerPlayable(PlayableGraph graph, ClipBlendData[] clipBlendData, int activeClipIndex = 0)
+    private static AnimationMixerPlayable GetAnimationMixerPlayable(PlayableGraph graph, ClipBlendData[] clipBlendData, int activeClipIndex = 0)
     {
         var mixer = AnimationMixerPlayable.Create(graph, clipBlendData.Length);
 
@@ -103,7 +108,7 @@ public abstract class State : ScriptableObject, IState
         return mixer;
     }
 
-    private List<BlendParams> GetBlendParams(ClipBlendData[] clipBlendData)
+    private static List<BlendParams> GetBlendParams(ClipBlendData[] clipBlendData)
     {
         var blendParams = new List<BlendParams>();
         foreach (var b in clipBlendData)
