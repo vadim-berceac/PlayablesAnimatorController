@@ -9,5 +9,6 @@ public enum StateType
     Crouch,
     UpperCombatIdle,
     Draw,
-    UnDraw
+    UnDraw,
+    Attack0
 }

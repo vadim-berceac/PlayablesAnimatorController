@@ -33,6 +33,11 @@ public class InputHandler
     {
         return _characterInput.Draw;
     }
+
+    public bool GetAttackInput()
+    {
+        return _characterInput.Attack;
+    }
     
     public void ResetBufferedInput()
     {

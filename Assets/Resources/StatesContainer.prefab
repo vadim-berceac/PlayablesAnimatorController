@@ -68,6 +68,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5511233f41221fb489094e4cad384cce, type: 2}
     - {fileID: 11400000, guid: 91d1026fd2797fc41abecf141ee96737, type: 2}
     - {fileID: 11400000, guid: 8316721903e05e54d86a4f03df6d75d4, type: 2}
+    - {fileID: 11400000, guid: 3c8a4f1f9a42c10438475569cd22dc7b, type: 2}
   - <SetType>k__BackingField: 3
     <StartStateIndex>k__BackingField: 0
     <AvatarMask>k__BackingField: {fileID: 31900000, guid: fba06fff1e00d8b4f8c66cd4046e7bbc, type: 2}

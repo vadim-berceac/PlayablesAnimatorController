@@ -10,12 +10,14 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     public bool Jump { get; set; }
     public bool Crouch { get; set; }
     public bool Draw { get; set; }
+    public bool Attack { get; set; }
     
     private InputAction _moveAction;
     private InputAction _runAction;
     private InputAction _jumpAction;
     private InputAction _crouchAction;
     private InputAction _drawAction;
+    private InputAction _attackAction;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _jumpAction = PlayerAction.FindAction("Jump");
         _crouchAction = PlayerAction.FindAction("Crouch");
         _drawAction = PlayerAction.FindAction("Draw");
+        _attackAction = PlayerAction.FindAction("Attack");
 
         Subscribe();
     }
@@ -32,6 +35,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     {
         Jump = false;
         Draw = false;
+        Attack = false;
     }
 
     private void Subscribe()
@@ -44,6 +48,7 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         
         _jumpAction.performed += OnJump;
         _drawAction.performed += OnDraw;
+        _attackAction.performed += OnAttack;
         
         _crouchAction.performed += OnCrouch;
         _crouchAction.canceled += OnCrouchCancel;
@@ -58,6 +63,8 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
         _runAction.canceled -= OnRunCancel;
         
         _jumpAction.performed -= OnJump;
+        _drawAction.performed -= OnDraw;
+        _attackAction.performed -= OnAttack;
         
         _crouchAction.performed -= OnCrouch;
         _crouchAction.canceled -= OnCrouchCancel;
@@ -96,6 +103,11 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     private void OnDraw(InputAction.CallbackContext context)
     {
         Draw = true;
+    }
+    
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        Attack = true;
     }
 
     private void OnCrouch(InputAction.CallbackContext context)

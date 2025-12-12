@@ -767,9 +767,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 912865606205468564, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
+      propertyPath: coefficient
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4280372525514096834, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
       propertyPath: weaponInHandsAnimationIndex
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6163752327915369098, guid: 18b1673b3f956f047babd9acc39a97f7, type: 3}
       propertyPath: m_Name
