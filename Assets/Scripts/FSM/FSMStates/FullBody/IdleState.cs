@@ -13,8 +13,6 @@ public class IdleState : State
             new(c => (c.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
                                                     && !c.Character.Inventory.IsWeaponDraw), c => StateType.Draw),
             new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
-            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
-                                                    && c.Character.Inventory.IsWeaponDraw), c => StateType.UnDraw),
         };
     }
 }

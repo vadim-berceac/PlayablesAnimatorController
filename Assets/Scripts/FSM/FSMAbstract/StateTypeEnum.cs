@@ -7,7 +7,7 @@ public enum StateType
     Sprint,
     Jump,
     Crouch,
-    UpperDefault,
+    UpperCombatIdle,
     Draw,
     UnDraw
 }

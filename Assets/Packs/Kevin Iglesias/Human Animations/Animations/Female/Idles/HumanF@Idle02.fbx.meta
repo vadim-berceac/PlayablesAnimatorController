@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c2952c969428f748be063e5768fa90a
+guid: 24b1b054ed689e44ba553f9841ebca06
 labels:
 - Animation
 ModelImporter:
@@ -970,8 +970,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 157744
-  packageName: Human Basic Motions
-  packageVersion: 2.4
-  assetPath: Assets/Kevin Iglesias/Human Animations/Animations/Female/Idles/HumanF@Idle02.fbx
-  uploadId: 762144
+  productId: 156596
+  packageName: Human Spellcasting Animations
+  packageVersion: 2.0
+  assetPath: Assets/Packs/Kevin Iglesias/Human Animations/Animations/Female/Idles/HumanF@Idle02.fbx
+  uploadId: 824672

@@ -8,7 +8,7 @@ public class UnDrawState: State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.StatesTimer.IsFinished), c => c.PreviousState.StateType),
+            new(c => (c.StatesTimer.IsFinished), c => c.Character.FullBodyFsm.CurrentState.StateType),
         };
     }
 
@@ -16,6 +16,5 @@ public class UnDrawState: State
     {
         base.OnExit(stateMachine);
         stateMachine.Character.Inventory.SetWeaponDraw(false);
-        stateMachine.Character.FullBodyFsm.SwitchAnimation();
     }
 }

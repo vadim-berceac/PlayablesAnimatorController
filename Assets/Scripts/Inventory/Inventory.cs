@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-  [SerializeField] [Range(0,5)] private int weaponInHandsAnimationIndex;
+  [SerializeField] [Range(0,6)] private int weaponInHandsAnimationIndex;
   
   public bool IsWeaponDraw { get; private set; }
 

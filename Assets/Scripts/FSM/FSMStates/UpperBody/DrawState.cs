@@ -8,7 +8,7 @@ public class DrawState: State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.StatesTimer.IsFinished), c => c.PreviousState.StateType),
+            new(c => (c.StatesTimer.IsFinished), c => StateType.UpperCombatIdle),
         };
     }
 
@@ -16,7 +16,5 @@ public class DrawState: State
     {
         stateMachine.Character.Inventory.SetWeaponDraw(true);
         base.OnEnter(stateMachine);
-        
-        stateMachine.Character.FullBodyFsm.SwitchAnimation();
     }
 }
