@@ -18,3 +18,10 @@ public struct BonePosition
     [field: SerializeField] public Quaternion Rotation { get; set; }
     [field: SerializeField] public float Scale { get; set; }
 }
+
+[System.Serializable]
+public struct WearableModel
+{
+    [field: SerializeField] public GameObject WearablePrefab { get; set; }
+    [field: SerializeField] public BonePosition BonePosition { get; set; }
+}
