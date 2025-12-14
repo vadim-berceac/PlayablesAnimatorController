@@ -3,28 +3,42 @@ using UnityEngine;
 public class SpineCorrector : MonoBehaviour
 {
     [SerializeField] private Transform originalSpine;
-
-    private Quaternion _rotationOffset = Quaternion.identity;
-    private Quaternion _targetRotation;
+    [SerializeField] private Animator animator;
+    
+    private Transform _spine;
+    private Transform _hips;
     private Transform _transform;
+    
+    private Vector3 _proxyForward;
+    private Vector3 _hipsForward;
+    private Vector3 _mixedForward;
+
+    private float _angle;
+    private float _t;
 
     private void Awake()
     {
-        if(originalSpine == null)
-        {
-           return;
-        }
-        
+        _spine = animator.GetBoneTransform(HumanBodyBones.Spine);
+        _hips = animator.GetBoneTransform(HumanBodyBones.Hips);
         _transform = transform;
-        _rotationOffset = Quaternion.Inverse(_transform.rotation) * originalSpine.rotation;
     }
 
     private void LateUpdate()
     {
-        if (originalSpine == null) return;
+        CorrectMixed();
+    }
 
-        _rotationOffset = Quaternion.Inverse(_transform.rotation) * originalSpine.rotation;
-        _targetRotation = Quaternion.Euler(0f, _rotationOffset.eulerAngles.y, 0f);
-        originalSpine.rotation = _transform.rotation * _targetRotation;
+    private void CorrectMixed()
+    {
+        _proxyForward = _transform.forward;
+        _hipsForward = _hips.forward;
+
+        _angle = Vector3.Angle(_hipsForward, _proxyForward);
+
+        _t = Mathf.InverseLerp(0f, 90f, _angle);
+
+        _mixedForward = Vector3.Slerp(_proxyForward, _hipsForward, _t);
+
+        _spine.rotation = Quaternion.LookRotation(_mixedForward, _spine.up);
     }
 }

@@ -16,8 +16,8 @@ MonoBehaviour:
   <SpeedMaxRule>k__BackingField: 0
   <MovementSpeed>k__BackingField: 0
   <AnimationSpeed>k__BackingField: 1
-  <EnterBlendSpeed>k__BackingField: 2
-  <CrossFadeTime>k__BackingField: 0.1
+  <EnterBlendSpeed>k__BackingField: 10
+  <CrossFadeTime>k__BackingField: 0.2
   <TimerStartMode>k__BackingField: 0
   <TimeToExit>k__BackingField: 0
   <ResetBufferedInput>k__BackingField: 1
