@@ -15,7 +15,7 @@ public struct BonePosition
     [field: SerializeField] public HumanBodyBones HumanBodyBone { get; set; }
     [field: SerializeField] public AttachPoint OccupiedPoint { get; set; }
     [field: SerializeField] public Vector3 Position { get; set; }
-    [field: SerializeField] public Quaternion Rotation { get; set; }
+    [field: SerializeField] public Vector3 Rotation { get; set; }
     [field: SerializeField] public float Scale { get; set; }
 }
 

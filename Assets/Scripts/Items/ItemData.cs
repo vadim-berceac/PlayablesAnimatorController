@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IItemData
@@ -8,21 +9,9 @@ public interface IItemData
     public GameObject GroundPrefab { get; set; }
 }
 
-public interface IItemRuntime
-{
-    public IItemData Take();
-    public void Drop();
-}
-
 public interface IWearableData
 {
     public WearableModel[] VisibleModels { get; set; }
-}
-
-public interface IWearableRuntime
-{
-    public void Equip (Animator animator);
-    public void UnEquip ();
 }
 
 public interface IWeaponData
@@ -30,12 +19,6 @@ public interface IWeaponData
     public float Damage { get; set; }
     public float Range { get; set; }
     public BonePosition HandPosition { get; set; }
-}
-
-public interface IWeaponRuntime
-{
-    public void Draw();
-    public void UnDraw();
 }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Items/ItemData")]

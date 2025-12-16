@@ -1,59 +1,64 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
-public class RuntimeItem<T> where T : ItemData
+public class RuntimeItem
 {
-    public T ItemData { get; private set; }
+    protected ItemData ItemData { get; private set; }
 
-    protected RuntimeItem(T itemData)
+    protected RuntimeItem(ItemData itemData)
     {
         ItemData = itemData;
     }
-    
-    public static RuntimeItem<T> Create(T itemData)
+
+    public static RuntimeItem Create(ItemData itemData)
     {
-        if (itemData is WeaponData weaponData)
-            return new RuntimeWeapon(weaponData) as RuntimeItem<T>;
-
-        if (itemData is WearableData wearableData)
-            return new RuntimeWearable(wearableData) as RuntimeItem<T>;
-
-        return new RuntimeItem<T>(itemData);
+        return itemData switch
+        {
+            WeaponData weaponData => new RuntimeWeapon(weaponData),
+            WearableData wearableData => new RuntimeWearable(wearableData),
+            _ => new RuntimeItem(itemData)
+        };
     }
 }
 
 
-public class RuntimeWearable : RuntimeItem<WearableData>, IWearableRuntime
+public class RuntimeWearable : RuntimeItem
 {
+    protected List<Transform> Parts { get; set; } = new();
+    protected new WearableData ItemData => (WearableData)base.ItemData;
+
     public RuntimeWearable(WearableData data) : base(data) { }
 
     public void Equip(Animator animator)
     {
-       
+        foreach (var model in ItemData.VisibleModels)
+        {
+            var part = Object.Instantiate(model.WearablePrefab);
+            Parts.Add(part.transform);
+            animator.AttachToBone(part.transform, model.BonePosition.HumanBodyBone, model.BonePosition.Position,
+                model.BonePosition.Rotation, model.BonePosition.Scale);
+        }
     }
 
     public void UnEquip()
     {
-        
+        foreach (var part in Parts)
+        {
+            Object.Destroy(part);
+        }
+        Parts.Clear();
     }
 }
 
 
-public class RuntimeWeapon : RuntimeItem<WeaponData>, IWearableRuntime, IWeaponRuntime
+public class RuntimeWeapon : RuntimeWearable
 {
+    protected new WeaponData ItemData => (WeaponData)base.ItemData;
+
     public RuntimeWeapon(WeaponData data) : base(data) { }
 
-    public void Equip(Animator animator)
-    {
-        
-    }
-
-    public void UnEquip()
-    {
-        
-    }
-
-    public void Draw()
+    public void Draw(int partIndex)
     {
        
     }
