@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f852d5862733f8e498cee5f73c2a5228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpineCorrector
-  mode: 0
   originalSpine: {fileID: 1642153402512116157}
   animator: {fileID: 586013780885664330}
 --- !u!4 &1642153402512116157 stripped
@@ -127,7 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   <InventorySettings>k__BackingField:
     <Animator>k__BackingField: {fileID: 586013780885664330}
-  weaponInHandsAnimationIndex: 3
+  weaponInHandsAnimationIndex: 1
+  <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: a7b1f2f3c71443e4b8c1c81e2afe0efb, type: 2}
 --- !u!114 &7763562407946616943
 MonoBehaviour:
   m_ObjectHideFlags: 0

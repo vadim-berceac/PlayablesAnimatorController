@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RuntimeItem
 {
-    protected ItemData ItemData { get; private set; }
+    public ItemData ItemData { get; private set; }
 
     protected RuntimeItem(ItemData itemData)
     {
@@ -32,6 +32,11 @@ public class RuntimeWearable : RuntimeItem
 
     public void Equip(Animator animator)
     {
+        if (ItemData.VisibleModels.Length == 0)
+        {
+            Debug.LogWarning($"No part to equip in {ItemData.name}");
+            return;
+        }
         foreach (var model in ItemData.VisibleModels)
         {
             var part = Object.Instantiate(model.WearablePrefab);
@@ -43,6 +48,11 @@ public class RuntimeWearable : RuntimeItem
 
     public void UnEquip()
     {
+        if (Parts.Count == 0)
+        {
+            Debug.LogWarning($"No part to equip in {ItemData.name}");
+            return;
+        }
         foreach (var part in Parts)
         {
             Object.Destroy(part);
@@ -55,16 +65,38 @@ public class RuntimeWearable : RuntimeItem
 public class RuntimeWeapon : RuntimeWearable
 {
     protected new WeaponData ItemData => (WeaponData)base.ItemData;
+    private BonePosition _previousBonePosition;
+    private Transform _part;
+    
+    public bool IsDraw { get; private set; }
 
     public RuntimeWeapon(WeaponData data) : base(data) { }
 
-    public void Draw(int partIndex)
+    public void Draw(Animator animator)
     {
-       
+        if (Parts.Count == 0)
+        {
+            Debug.LogWarning($"No part to equip in {ItemData.name}");
+            return;
+        }
+
+        _previousBonePosition = ItemData.VisibleModels[ItemData.ModelIndex].BonePosition;
+        
+        _part = Parts[ItemData.ModelIndex];
+        var data = ItemData.HandPosition;
+        animator.AttachToBone(_part, data.HumanBodyBone, data.Position, data.Rotation, data.Scale);
+        IsDraw = true;
     }
 
-    public void UnDraw()
+    public void UnDraw(Animator animator)
     {
-        
+        if (Parts.Count == 0)
+        {
+            Debug.LogWarning($"No part to equip in {ItemData.name}");
+            return;
+        }
+        animator.AttachToBone(_part, _previousBonePosition.HumanBodyBone, 
+            _previousBonePosition.Position, _previousBonePosition.Rotation, _previousBonePosition.Scale);
+        IsDraw = false;
     }
 }
