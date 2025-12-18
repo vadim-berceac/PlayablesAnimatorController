@@ -15,6 +15,15 @@ public class UnDrawState: State
     public override void OnExit(IStateMachine stateMachine)
     {
         base.OnExit(stateMachine);
-        stateMachine.Character.Inventory.SetWeaponDraw(false);
+        stateMachine.Character.Inventory.UnDrawPrimaryWeapon();
+    }
+    
+    public override void OnUpdate(IStateMachine stateMachine)
+    {
+        base.OnUpdate(stateMachine);
+        if (stateMachine.StatesTimer.IsEventTriggered)
+        {
+            stateMachine.Character.Inventory.UnDrawPrimaryWeapon();
+        }
     }
 }

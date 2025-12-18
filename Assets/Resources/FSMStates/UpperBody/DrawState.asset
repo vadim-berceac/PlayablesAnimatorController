@@ -19,6 +19,7 @@ MonoBehaviour:
   <EnterBlendSpeed>k__BackingField: 5
   <CrossFadeTime>k__BackingField: 0.05
   <TimerStartMode>k__BackingField: 2
+  <ActionTime>k__BackingField: 0.352
   <TimeToExit>k__BackingField: 0
   <ResetBufferedInput>k__BackingField: 0
   <LinkToWeaponIndex>k__BackingField: 1

@@ -12,7 +12,7 @@ public class CrouchState: State
                       Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed)), c => StateType.Run),
             new(c => (!c.InputHandler.GetCrouchInput()), c => c.PreviousState.StateType),
             new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
-                                                    && !c.Character.Inventory.IsWeaponDraw), c => StateType.Draw),
+                                                    && !c.Character.Inventory.IsWeaponDrawState), c => StateType.Draw),
         };
     }
 }

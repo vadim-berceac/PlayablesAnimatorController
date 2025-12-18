@@ -4,7 +4,7 @@ public class Inventory : MonoBehaviour
 {
     [field: SerializeField] public InventorySettings InventorySettings { get; set; }
     [field: SerializeField] private WeaponData PrimaryWeapon { get; set; }
-    public bool IsWeaponDraw { get; private set; }
+    public bool IsWeaponDrawState { get; private set; }
     
     public RuntimeWeapon PrimaRuntimeWeapon { get; private set; }
 
@@ -12,17 +12,22 @@ public class Inventory : MonoBehaviour
     {
         PrimaRuntimeWeapon = (RuntimeWeapon) RuntimeItem.Create(PrimaryWeapon);
         PrimaRuntimeWeapon.Equip(InventorySettings.Animator);
-        PrimaRuntimeWeapon.Draw(InventorySettings.Animator);
     }
 
     public int GetWeaponInHandsAnimationIndex()
     {
         return ((WeaponData)PrimaRuntimeWeapon.ItemData).AnimationSetIndex;
     }
-
-    public void SetWeaponDraw(bool value)
+    public void DrawPrimaryWeapon()
     {
-       IsWeaponDraw = value;
+        PrimaRuntimeWeapon?.Draw(InventorySettings.Animator);
+        IsWeaponDrawState = true;
+    }
+
+    public void UnDrawPrimaryWeapon()
+    {
+        PrimaRuntimeWeapon?.UnDraw(InventorySettings.Animator);
+        IsWeaponDrawState = false;
     }
 }
 

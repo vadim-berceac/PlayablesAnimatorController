@@ -18,6 +18,7 @@ public abstract class State : ScriptableObject, IState
     [field: Space (3)]
     [field: Header("Timer Settings")]
     [field: SerializeField] public TimerStartMode TimerStartMode { get; set; }
+    [field: SerializeField, Range(0f, 1f)] public float ActionTime { get; set; }
     [field: SerializeField] public float TimeToExit { get; set; }
     [field: SerializeField] public bool ResetBufferedInput { get; set; } = true;
     

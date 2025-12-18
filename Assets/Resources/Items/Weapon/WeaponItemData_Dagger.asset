@@ -24,6 +24,13 @@ MonoBehaviour:
       <Position>k__BackingField: {x: -0.199, y: 0.072, z: 0.077}
       <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
       <Scale>k__BackingField: 1
+  - <WearablePrefab>k__BackingField: {fileID: 6060900598693940223, guid: 89cdf7fa54e3caa42909c8e589f0ddc7, type: 3}
+    <BonePosition>k__BackingField:
+      <HumanBodyBone>k__BackingField: 0
+      <OccupiedPoint>k__BackingField: 0
+      <Position>k__BackingField: {x: -0.199, y: -0.268, z: -0.115}
+      <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
+      <Scale>k__BackingField: 1
   <Damage>k__BackingField: 10
   <Range>k__BackingField: 0.8
   <AnimationSetIndex>k__BackingField: 1

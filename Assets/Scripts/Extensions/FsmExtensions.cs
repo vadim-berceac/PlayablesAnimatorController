@@ -6,9 +6,10 @@ public static class FsmExtensions
 {
     public static void SwitchAnimation(this IStateMachine stateMachine)
     {
-        var collectionIndex = stateMachine.CurrentState.LinkToWeaponIndex && stateMachine.Character.Inventory.IsWeaponDraw 
+        var collectionIndex = stateMachine.CurrentState.LinkToWeaponIndex 
             ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
         stateMachine.StatesTimer.Start(stateMachine.CurrentState, collectionIndex);
+        stateMachine.StatesTimer.SetActionNormalizedTime(stateMachine.CurrentState.ActionTime);
         var clipBlendDataCollection = stateMachine.CurrentState.ClipBlendDataCollections[collectionIndex];
         if (clipBlendDataCollection.ClipsBlendData == null || clipBlendDataCollection.ClipsBlendData.Length == 0)
         {

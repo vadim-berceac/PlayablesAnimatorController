@@ -12,9 +12,13 @@ public class DrawState: State
         };
     }
 
-    public override void OnEnter(IStateMachine stateMachine)
+
+    public override void OnUpdate(IStateMachine stateMachine)
     {
-        stateMachine.Character.Inventory.SetWeaponDraw(true);
-        base.OnEnter(stateMachine);
+        base.OnUpdate(stateMachine);
+        if (stateMachine.StatesTimer.IsEventTriggered)
+        {
+            stateMachine.Character.Inventory.DrawPrimaryWeapon();
+        }
     }
 }
