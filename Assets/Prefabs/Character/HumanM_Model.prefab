@@ -126,8 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   <InventorySettings>k__BackingField:
     <Animator>k__BackingField: {fileID: 586013780885664330}
-  weaponInHandsAnimationIndex: 1
-  <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: a7b1f2f3c71443e4b8c1c81e2afe0efb, type: 2}
+  <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: 48cb0d3afebf6ec4ba23a3218c07f4f0, type: 2}
 --- !u!114 &7763562407946616943
 MonoBehaviour:
   m_ObjectHideFlags: 0

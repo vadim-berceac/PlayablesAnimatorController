@@ -9,28 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: DaggerData
+  m_Script: {fileID: 11500000, guid: 46992fb126506e94eb0bf19af5e1cea6, type: 3}
+  m_Name: WeaponItemData_Dagger
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   <Name>k__BackingField: Dagger
   <Icon>k__BackingField: {fileID: 0}
-  <Price>k__BackingField: 0
+  <Price>k__BackingField: 10
   <GroundPrefab>k__BackingField: {fileID: 2380086377842109857, guid: b047f7e1cc7339944a46dde87d41864c, type: 3}
   <VisibleModels>k__BackingField:
   - <WearablePrefab>k__BackingField: {fileID: 9057939526845339412, guid: b13ca66d9ae3d544792384121f63c042, type: 3}
     <BonePosition>k__BackingField:
       <HumanBodyBone>k__BackingField: 0
       <OccupiedPoint>k__BackingField: 0
-      <Position>k__BackingField: {x: -0.3, y: 0, z: 0}
-      <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+      <Position>k__BackingField: {x: -0.199, y: 0.072, z: 0.077}
+      <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
       <Scale>k__BackingField: 1
-  <Damage>k__BackingField: 0
-  <Range>k__BackingField: 0
+  <Damage>k__BackingField: 10
+  <Range>k__BackingField: 0.8
   <AnimationSetIndex>k__BackingField: 1
   <HandPosition>k__BackingField:
     <HumanBodyBone>k__BackingField: 18
     <OccupiedPoint>k__BackingField: 4
-    <Position>k__BackingField: {x: 0, y: 0, z: 0}
-    <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+    <Position>k__BackingField: {x: -0.038, y: 0.138, z: 0.043}
+    <Rotation>k__BackingField: {x: 0, y: 0, z: 90}
     <Scale>k__BackingField: 1
   <ModelIndex>k__BackingField: 0
