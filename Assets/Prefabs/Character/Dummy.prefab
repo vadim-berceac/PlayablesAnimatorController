@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 32d79c5134013b04cbd5ab86636451cb, type: 2}
     - target: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       propertyPath: m_Name
-      value: HumanM_Model
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       propertyPath: m_UpdateMode
@@ -68,6 +68,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3767565731782613272}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4280372525514096834}
@@ -112,6 +115,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
   m_PrefabInstance: {fileID: 6434348385937706971}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3767565731782613272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163752327915369098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da58f11202ffb647b821158acbb4d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PresetLoader
+  <CharacterData>k__BackingField: {fileID: 0}
 --- !u!114 &4280372525514096834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   <InventorySettings>k__BackingField:
+    <Loader>k__BackingField: {fileID: 3767565731782613272}
     <Animator>k__BackingField: {fileID: 586013780885664330}
-  <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: 48cb0d3afebf6ec4ba23a3218c07f4f0, type: 2}
 --- !u!114 &7763562407946616943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
   <IsPlayerControlled>k__BackingField: 1
-  <Inventory>k__BackingField: {fileID: 4280372525514096834}
-  <AnimationSettings>k__BackingField:
+  <CharacterSettings>k__BackingField:
     <Animator>k__BackingField: {fileID: 586013780885664330}
+    <Inventory>k__BackingField: {fileID: 4280372525514096834}

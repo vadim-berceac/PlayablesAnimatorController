@@ -5,9 +5,9 @@ using Zenject;
 public class Character : MonoBehaviour
 {
     [field: SerializeField] public bool IsPlayerControlled { get; set; }
-    [field: SerializeField] public Inventory Inventory { get; set; }
-    [field: SerializeField] public AnimationSettings AnimationSettings { get; set; }
+    [field: SerializeField] public CharacterSettings CharacterSettings { get; set; }
    
+    public Inventory Inventory => CharacterSettings.Inventory;
     public Fsm FullBodyFsm { get; private set; }
     public Fsm UpperBodyFsm { get; private set; }
     public GraphCore GraphCore { get; private set; }
@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
         }
         
         StatesContainer = statesContainer;
-        GraphCore = new GraphCore(AnimationSettings.Animator, 3);
+        GraphCore = new GraphCore(CharacterSettings.Animator, 3);
         
         FullBodyFsm = new Fsm(this, 0, SetType.FullBody);
         GraphCore.SetUpLayer(0, StatesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
@@ -73,8 +73,9 @@ public class Character : MonoBehaviour
 }
 
 [System.Serializable]
-public struct AnimationSettings
+public struct CharacterSettings
 {
     [field: SerializeField] public Animator Animator { get; private set; }
+    [field: SerializeField] public Inventory Inventory { get; set; }
 }
 
