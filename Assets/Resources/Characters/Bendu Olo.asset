@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Bendu Olo
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   <Name>k__BackingField: Bendu Olo
+  <Skin>k__BackingField: {fileID: 11400000, guid: c0e4184000d8547409f2bb7f7c5cdb9e, type: 2}
   <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: 48cb0d3afebf6ec4ba23a3218c07f4f0, type: 2}

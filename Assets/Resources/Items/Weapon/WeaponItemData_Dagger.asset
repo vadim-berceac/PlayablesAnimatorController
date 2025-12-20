@@ -37,7 +37,7 @@ MonoBehaviour:
   <HandPosition>k__BackingField:
     <HumanBodyBone>k__BackingField: 18
     <OccupiedPoint>k__BackingField: 4
-    <Position>k__BackingField: {x: -0.038, y: 0.138, z: 0.043}
-    <Rotation>k__BackingField: {x: 0, y: 0, z: 90}
+    <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
+    <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
     <Scale>k__BackingField: 1
   <ModelIndex>k__BackingField: 0

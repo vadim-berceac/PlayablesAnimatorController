@@ -81,6 +81,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 912865606205468564}
   m_SourcePrefab: {fileID: 100100000, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
+--- !u!137 &216941107167227708 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2717395650310496025, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
+  m_PrefabInstance: {fileID: 6434348385937706971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &586013780885664330 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e9c8478d9a0fc5a42b57e806e6bbaef3, type: 3}
@@ -128,6 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresetLoader
   <CharacterData>k__BackingField: {fileID: 0}
+  <PresetLoaderSettings>k__BackingField:
+    <SkeletonRenderer>k__BackingField: {fileID: 216941107167227708}
+    <Animator>k__BackingField: {fileID: 586013780885664330}
 --- !u!114 &4280372525514096834
 MonoBehaviour:
   m_ObjectHideFlags: 0
