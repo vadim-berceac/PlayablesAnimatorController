@@ -42,11 +42,11 @@ MonoBehaviour:
   <Range>k__BackingField: 1.2
   <AnimationSet>k__BackingField: 5
   <RangeType>k__BackingField: 1
-  <HandPosition>k__BackingField:
-    <WearableModelIndex>k__BackingField: 0
+  <HandSetups>k__BackingField:
+  - <WearableModelIndex>k__BackingField: 2
     <BonePosition>k__BackingField:
       <HumanBodyBone>k__BackingField: 0
       <OccupiedPoint>k__BackingField: 0
       <Position>k__BackingField: {x: 0, y: 0, z: 0}
       <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
-      <Scale>k__BackingField: 1
+      <Scale>k__BackingField: 0

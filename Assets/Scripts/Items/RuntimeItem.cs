@@ -80,10 +80,10 @@ public class RuntimeWeapon : RuntimeWearable
             return;
         }
 
-        _previousBonePosition = ItemData.VisibleModels[ItemData.HandSetup.WearableModelIndex].BonePosition;
+        _previousBonePosition = ItemData.VisibleModels[ItemData.HandSetups[0].WearableModelIndex].BonePosition;
         
-        _part = Parts[ItemData.HandSetup.WearableModelIndex];
-        var data = ItemData.HandSetup.BonePosition;
+        _part = Parts[ItemData.HandSetups[0].WearableModelIndex];
+        var data = ItemData.HandSetups[0].BonePosition;
         animator.AttachToBone(_part, data.HumanBodyBone, data.Position, data.Rotation, data.Scale);
         IsDraw = true;
     }

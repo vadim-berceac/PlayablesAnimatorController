@@ -7,5 +7,5 @@ public class WeaponData : WearableData, IWeaponData
     [field: SerializeField] public float Range { get; set; }
     [field: SerializeField] public AnimationSet AnimationSet { get; set; }
     [field: SerializeField] public WeaponRange RangeType { get; set; }
-    [field: SerializeField] public HandPosition HandSetup { get; set; }
+    [field: SerializeField] public HandPosition[] HandSetups { get; set; }
 }
