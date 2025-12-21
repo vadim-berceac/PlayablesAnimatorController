@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46992fb126506e94eb0bf19af5e1cea6, type: 3}
-  m_Name: WeaponItemData_Sword
+  m_Name: WeaponItemData_DaggersDual
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  <Name>k__BackingField: Sword
+  <Name>k__BackingField: Dagger Dual
   <Icon>k__BackingField: {fileID: 0}
   <Price>k__BackingField: 25
   <GroundPrefab>k__BackingField: {fileID: 3750197365726205939, guid: b70abbb1c851daa40b83d6c886fad7cd, type: 3}
@@ -40,7 +40,7 @@ MonoBehaviour:
       <Scale>k__BackingField: 1
   <Damage>k__BackingField: 20
   <Range>k__BackingField: 1.2
-  <AnimationSet>k__BackingField: 1
+  <AnimationSet>k__BackingField: 4
   <RangeType>k__BackingField: 0
   <HandPosition>k__BackingField:
     <HumanBodyBone>k__BackingField: 18

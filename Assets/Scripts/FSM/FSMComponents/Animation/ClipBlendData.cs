@@ -10,6 +10,7 @@ public struct ClipBlendData
 [System.Serializable]
 public struct ClipBlendDataCollection
 {
+    [field: SerializeField] public AnimationSet AnimationSet { get; private set; }
     [field: SerializeField] public ClipBlendData[] ClipsBlendData { get; private set; }
 }
 

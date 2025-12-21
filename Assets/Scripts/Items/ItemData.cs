@@ -17,9 +17,9 @@ public interface IWeaponData
 {
     public float Damage { get; set; }
     public float Range { get; set; }
-    public int AnimationSetIndex { get; set; }
-    public BonePosition HandPosition { get; set; }
-    public int ModelIndex { get; set; }
+    public AnimationSet AnimationSet { get; set; }
+    public WeaponRange RangeType { get; set; }
+    public HandPosition HandSetup { get; set; }
 }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Items/ItemData")]

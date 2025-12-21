@@ -25,3 +25,10 @@ public struct WearableModel
     [field: SerializeField] public GameObject WearablePrefab { get; set; }
     [field: SerializeField] public BonePosition BonePosition { get; set; }
 }
+
+[System.Serializable]
+public struct HandPosition
+{
+    [field: SerializeField] public int WearableModelIndex { get; set; }
+    [field: SerializeField] public BonePosition BonePosition { get; set; }
+}
