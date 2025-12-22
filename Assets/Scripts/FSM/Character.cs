@@ -12,12 +12,13 @@ public class Character : MonoBehaviour
     public Fsm UpperBodyFsm { get; private set; }
     public GraphCore GraphCore { get; private set; }
     public StatesContainer StatesContainer { get; private set; }
+    public AvatarMasksContainer AvatarMasksContainer { get; private set; }
     public InputHandler InputHandler { get; private set; }
     
     private StatesTransition _statesTransition;
 
     [Inject]
-    private void Construct(StatesContainer statesContainer, PlayerInput playerInput)
+    private void Construct(StatesContainer statesContainer, AvatarMasksContainer avatarMasksContainer, PlayerInput playerInput)
     {
         if (IsPlayerControlled)
         {
@@ -25,22 +26,21 @@ public class Character : MonoBehaviour
         }
         
         StatesContainer = statesContainer;
+        AvatarMasksContainer = avatarMasksContainer;
         GraphCore = new GraphCore(CharacterSettings.Animator, 3);
         
         FullBodyFsm = new Fsm(this, 0, SetType.FullBody);
-        GraphCore.SetUpLayer(0, StatesContainer.GetAvatarMaskBySetType(SetType.FullBody), false);
+        GraphCore.SetUpLayer(0, AvatarMasksContainer.GetMask(AvatarMaskType.FullBody), false);
         GraphCore.SetLayerWeight(0,1);
-        
-        _statesTransition = new StatesTransition(FullBodyFsm);
-        FullBodyFsm.SetStatesTransition(_statesTransition);
+        FullBodyFsm.SetStatesTransition(_statesTransition = new StatesTransition(FullBodyFsm));
         
         //тестовая стейт машина для верха тела
         UpperBodyFsm = new Fsm(this, 1, SetType.UpperBody);
-        GraphCore.SetUpLayer(1, StatesContainer.GetAvatarMaskBySetType(SetType.UpperBody), false);
-        var layerConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive)>
+        GraphCore.SetUpLayer(1, AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), false);
+        var layerConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
         {
-            (1, 0, StatesContainer.GetAvatarMaskBySetType(SetType.UpperBody), true),
-            (2, 1, StatesContainer.GetAvatarMaskBySetType(SetType.Hands), false)
+            (1, 0, AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), true, 1f),
+            (2, 1, AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false, 1f)
         };
         UpperBodyFsm.ConnectToMultipleLayers(layerConfigs);
         GraphCore.SetLayerWeight(1,1);

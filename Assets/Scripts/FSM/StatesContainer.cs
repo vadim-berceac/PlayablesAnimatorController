@@ -32,11 +32,6 @@ public class StatesContainer : MonoBehaviour
             .SelectMany(s => s.States)
             .FirstOrDefault(x => x.StateType == stateType);
     }
-
-    public AvatarMask GetAvatarMaskBySetType(SetType setType)
-    {
-        return statesSet.FirstOrDefault(s => s.SetType == setType).AvatarMask;
-    }
 }
 
 [System.Serializable]
@@ -44,7 +39,6 @@ public struct StatesSet
 {
     [field: SerializeField] public SetType SetType { get; set; }
     [field: SerializeField] public int StartStateIndex { get; set; }
-    [field: SerializeField] public AvatarMask AvatarMask { get; private set; }
     [field: SerializeField] public State[] States { get; set; }
 }
 

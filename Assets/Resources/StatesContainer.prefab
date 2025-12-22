@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8230544754490416576}
   - component: {fileID: 8362704393101050016}
+  - component: {fileID: 1155810277638785193}
   m_Layer: 0
   m_Name: StatesContainer
   m_TagString: Untagged
@@ -47,7 +48,6 @@ MonoBehaviour:
   statesSet:
   - <SetType>k__BackingField: 1
     <StartStateIndex>k__BackingField: 0
-    <AvatarMask>k__BackingField: {fileID: 31900000, guid: b1bc73dd4e1f05a43b457aa10f781460, type: 2}
     <States>k__BackingField:
     - {fileID: 11400000, guid: 88485f826bf4cbe45a8f650604a00f4f, type: 2}
     - {fileID: 11400000, guid: 5fd0fb33fec04844ca38b0f683449e4e, type: 2}
@@ -57,7 +57,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c782147143ffe0948b4ae6dfb55fbc5d, type: 2}
   - <SetType>k__BackingField: 2
     <StartStateIndex>k__BackingField: 0
-    <AvatarMask>k__BackingField: {fileID: 31900000, guid: 37ea55a5fdbc36b45b75747e3460f37d, type: 2}
     <States>k__BackingField:
     - {fileID: 11400000, guid: 88485f826bf4cbe45a8f650604a00f4f, type: 2}
     - {fileID: 11400000, guid: 5fd0fb33fec04844ca38b0f683449e4e, type: 2}
@@ -69,7 +68,26 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 91d1026fd2797fc41abecf141ee96737, type: 2}
     - {fileID: 11400000, guid: 8316721903e05e54d86a4f03df6d75d4, type: 2}
     - {fileID: 11400000, guid: 3c8a4f1f9a42c10438475569cd22dc7b, type: 2}
-  - <SetType>k__BackingField: 3
-    <StartStateIndex>k__BackingField: 0
-    <AvatarMask>k__BackingField: {fileID: 31900000, guid: fba06fff1e00d8b4f8c66cd4046e7bbc, type: 2}
-    <States>k__BackingField: []
+--- !u!114 &1155810277638785193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170405669619682467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea283e7c5c10754fbd6192ca64e63a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AvatarMasksContainer
+  <AvatarMaskSetups>k__BackingField:
+  - <MaskType>k__BackingField: 1
+    <Mask>k__BackingField: {fileID: 31900000, guid: b1bc73dd4e1f05a43b457aa10f781460, type: 2}
+  - <MaskType>k__BackingField: 2
+    <Mask>k__BackingField: {fileID: 31900000, guid: 37ea55a5fdbc36b45b75747e3460f37d, type: 2}
+  - <MaskType>k__BackingField: 8
+    <Mask>k__BackingField: {fileID: 31900000, guid: fba06fff1e00d8b4f8c66cd4046e7bbc, type: 2}
+  - <MaskType>k__BackingField: 5
+    <Mask>k__BackingField: {fileID: 31900000, guid: e361c762c333dce47a0c15db223d59b9, type: 2}
+  - <MaskType>k__BackingField: 6
+    <Mask>k__BackingField: {fileID: 31900000, guid: 1b97e983d3f97d84bb7ad45f1211e57d, type: 2}

@@ -21,6 +21,7 @@ MonoBehaviour:
   <TimerStartMode>k__BackingField: 2
   <ActionTime>k__BackingField: 0.352
   <TimeToExit>k__BackingField: 0
+  <ResetBufferedInput>k__BackingField: 1
   <LinkToWeaponIndex>k__BackingField: 1
   <ClipBlendDataCollections>k__BackingField:
   - <AnimationSet>k__BackingField: 0
@@ -29,39 +30,46 @@ MonoBehaviour:
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 1
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 7d2607b300f65744aa880a0891f694e4, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 2
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: f7c5eb8e66dc1e74e96d98b3d749e0aa, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 3
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: c69e773115a45a743b87b2584dd7c5db, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 4
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: c69e773115a45a743b87b2584dd7c5db, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 5
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: c69e773115a45a743b87b2584dd7c5db, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []
   - <AnimationSet>k__BackingField: 6
     <ClipsBlendData>k__BackingField:
     - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: c69e773115a45a743b87b2584dd7c5db, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField: []

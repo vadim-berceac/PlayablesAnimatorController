@@ -17,7 +17,7 @@ public class Fsm : FSMAbstract
        SwitchState(character.StatesContainer.GetStartStateType(SetType));
     }
 
-    public void ConnectToMultipleLayers(List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive)> layerConfigs)
+    public void ConnectToMultipleLayers(List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weght)> layerConfigs)
     {
         AnimatorController.ConnectToMultipleLayers(layerConfigs);
     }

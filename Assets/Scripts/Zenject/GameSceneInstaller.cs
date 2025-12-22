@@ -8,6 +8,7 @@ public class GameSceneInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<StatesContainer>().FromComponentInNewPrefab(statesContainerPrefab).AsSingle().NonLazy();
+        Container.Bind<AvatarMasksContainer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<PlayerInput>().FromComponentInNewPrefab(playerInputPrefab).AsSingle().NonLazy();
     }
 }
