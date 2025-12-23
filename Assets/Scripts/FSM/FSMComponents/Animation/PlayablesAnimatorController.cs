@@ -91,6 +91,19 @@ public class PlayablesAnimatorController
         _graphCore.Graph.Evaluate(); 
     }
 
+    public void SetAvatarMask(List<(int layerIndex, AvatarMask avatarMask, bool isAdditive)> layerConfigs)
+    {
+        foreach (var config in layerConfigs)
+        {
+            var layerIndex = config.layerIndex;
+            var mask = config.avatarMask;
+            var isAdditive = config.isAdditive;
+            
+            _graphCore.SetUpLayer(layerIndex, mask, isAdditive);
+        }
+        _graphCore.Graph.Evaluate();
+    }
+
     public void OnUpdate(float deltaTime, params float[] parameters)
     {
         CleanUp();

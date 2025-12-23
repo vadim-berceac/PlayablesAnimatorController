@@ -21,4 +21,9 @@ public class Fsm : FSMAbstract
     {
         AnimatorController.ConnectToMultipleLayers(layerConfigs);
     }
+
+    public void SetAvatarMask(List<(int layerIndex, AvatarMask avatarMask, bool isAdditive)> layerConfigs)
+    {
+        AnimatorController.SetAvatarMask(layerConfigs);
+    }
 }

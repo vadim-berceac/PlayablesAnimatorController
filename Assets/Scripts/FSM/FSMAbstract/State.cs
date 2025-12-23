@@ -37,9 +37,11 @@ public abstract class State : ScriptableObject, IState
         {
             stateMachine.InputHandler.ResetBufferedInput();
         }
+        
+        SwitchAvatarMask(stateMachine);
     }
 
-    public void Test(IStateMachine stateMachine)
+    private void SwitchAvatarMask(IStateMachine stateMachine)
     {
         if (stateMachine.SetType != SetType.UpperBody || !LinkToWeaponIndex ||stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() == 0)
         {
@@ -49,37 +51,31 @@ public abstract class State : ScriptableObject, IState
        
         if (clipBlendData.LayersConfigs == null || clipBlendData.LayersConfigs.Length == 0)
         {
-            var defaultConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
+            var defaultConfigs = new List<(int graphPortIndex, AvatarMask mask, bool isAdditive)>
             {
-                (1, 0, stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), false, 1f),
-                (2, 1, stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false, 1f)
+                (1,stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), false),
+                (2,stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false)
             };
-        
-            stateMachine.Character.UpperBodyFsm.ConnectToMultipleLayers(defaultConfigs);
+            stateMachine.Character.UpperBodyFsm.SetAvatarMask(defaultConfigs);
             return;
         }
 
         var upperSmConfigs =
-            new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)> { };
+            new List<(int graphPortIndex, AvatarMask mask, bool isAdditive)> { };
         upperSmConfigs.Clear();
         
         foreach (var layerConfigs in clipBlendData.LayersConfigs)
         {
-            upperSmConfigs.Add((layerConfigs.GraphPortIndex, layerConfigs.OutputPortIndex,
+            upperSmConfigs.Add((layerConfigs.GraphPortIndex,
                 stateMachine.Character.AvatarMasksContainer.GetMask(layerConfigs.MaskType),
-                layerConfigs.IsAdditive,layerConfigs.Weight));
+                layerConfigs.IsAdditive));
         }
-        stateMachine.Character.UpperBodyFsm.ConnectToMultipleLayers(upperSmConfigs);
+        stateMachine.Character.UpperBodyFsm.SetAvatarMask(upperSmConfigs);
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)
     {
         CheckSwitchConditions(stateMachine);
-
-        // if (stateMachine.AnimatorController.ConsumeCrossFading())
-        // {
-        //     Test(stateMachine);
-        // }
     }
 
     public virtual void OnFixedUpdate(IStateMachine stateMachine)
