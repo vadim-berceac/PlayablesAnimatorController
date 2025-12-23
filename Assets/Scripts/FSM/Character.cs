@@ -30,20 +30,20 @@ public class Character : MonoBehaviour
         GraphCore = new GraphCore(CharacterSettings.Animator, 3);
         
         FullBodyFsm = new Fsm(this, 0, SetType.FullBody);
-        GraphCore.SetUpLayer(0, AvatarMasksContainer.GetMask(AvatarMaskType.FullBody), false);
-        GraphCore.SetLayerWeight(0,1);
+        var fullSmConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
+            {
+                (0, 0, AvatarMasksContainer.GetMask(AvatarMaskType.FullBody), false, 1f)
+            };
+        FullBodyFsm.ConnectToMultipleLayers(fullSmConfigs);
         FullBodyFsm.SetStatesTransition(_statesTransition = new StatesTransition(FullBodyFsm));
         
-        //тестовая стейт машина для верха тела
         UpperBodyFsm = new Fsm(this, 1, SetType.UpperBody);
-        GraphCore.SetUpLayer(1, AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), false);
-        var layerConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
-        {
-            (1, 0, AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), true, 1f),
-            (2, 1, AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false, 1f)
-        };
-        UpperBodyFsm.ConnectToMultipleLayers(layerConfigs);
-        GraphCore.SetLayerWeight(1,1);
+        var upperSmConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
+            {
+               (1, 0, AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), true, 1f),
+               (2, 1, AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false, 1f)
+            };
+        UpperBodyFsm.ConnectToMultipleLayers(upperSmConfigs);
         UpperBodyFsm.SetStatesTransition(_statesTransition);
     }
 

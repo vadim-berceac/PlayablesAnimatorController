@@ -30,6 +30,9 @@ public class PlayablesAnimatorController
 
     public GraphCore GraphCore => _graphCore;
     public bool IsCrossFading { get; private set; }
+    
+    private bool _crossFadeComplete;
+    public bool ConsumeCrossFading() { if (_crossFadeComplete) { _crossFadeComplete = false; return true; } return false; }
 
     public PlayablesAnimatorController(GraphCore graphCore, int graphPort)
     {
@@ -202,6 +205,7 @@ public class PlayablesAnimatorController
         _previousMixerPlayable = _currentMixerPlayable;
         _activePort = 0;
         IsCrossFading = false;
+        _crossFadeComplete = false;
     }
 
     private void HandleInterrupt(int sourcePort, int targetPort)
@@ -213,6 +217,7 @@ public class PlayablesAnimatorController
         _activePort = targetPort;
         _previousMixerPlayable = _currentMixerPlayable;
         IsCrossFading = false;
+        _crossFadeComplete = false;
     }
 
     private void HandlePendingCleanup(int targetPort)
@@ -230,6 +235,7 @@ public class PlayablesAnimatorController
     {
         _crossFadeTime = 0f;
         IsCrossFading = true;
+        _crossFadeComplete = true;
 
         _previousMixerPlayable = _currentMixerPlayable;
         _currentMixerPlayable = nextMixer;
@@ -244,6 +250,7 @@ public class PlayablesAnimatorController
     private void FinishCrossFade(int sourcePort, int targetPort)
     {
         IsCrossFading = false;
+        _crossFadeComplete = false;
         _generalMixerPlayable.SetWeights(true, (sourcePort, 0f),(targetPort, 1f));
 
         _fadingOutMixer = _previousMixerPlayable;

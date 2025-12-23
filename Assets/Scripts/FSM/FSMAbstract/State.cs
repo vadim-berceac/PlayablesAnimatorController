@@ -39,9 +39,47 @@ public abstract class State : ScriptableObject, IState
         }
     }
 
+    public void Test(IStateMachine stateMachine)
+    {
+        if (stateMachine.SetType != SetType.UpperBody || !LinkToWeaponIndex ||stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() == 0)
+        {
+            return;
+        }
+        var clipBlendData = ClipBlendDataCollections[stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex()].ClipsBlendData[0];
+       
+        if (clipBlendData.LayersConfigs == null || clipBlendData.LayersConfigs.Length == 0)
+        {
+            var defaultConfigs = new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)>
+            {
+                (1, 0, stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.UpperBody), false, 1f),
+                (2, 1, stateMachine.Character.AvatarMasksContainer.GetMask(AvatarMaskType.BothHands), false, 1f)
+            };
+        
+            stateMachine.Character.UpperBodyFsm.ConnectToMultipleLayers(defaultConfigs);
+            return;
+        }
+
+        var upperSmConfigs =
+            new List<(int graphPortIndex, int outputPortIndex, AvatarMask mask, bool isAdditive, float weight)> { };
+        upperSmConfigs.Clear();
+        
+        foreach (var layerConfigs in clipBlendData.LayersConfigs)
+        {
+            upperSmConfigs.Add((layerConfigs.GraphPortIndex, layerConfigs.OutputPortIndex,
+                stateMachine.Character.AvatarMasksContainer.GetMask(layerConfigs.MaskType),
+                layerConfigs.IsAdditive,layerConfigs.Weight));
+        }
+        stateMachine.Character.UpperBodyFsm.ConnectToMultipleLayers(upperSmConfigs);
+    }
+
     public virtual void OnUpdate(IStateMachine stateMachine)
     {
         CheckSwitchConditions(stateMachine);
+
+        // if (stateMachine.AnimatorController.ConsumeCrossFading())
+        // {
+        //     Test(stateMachine);
+        // }
     }
 
     public virtual void OnFixedUpdate(IStateMachine stateMachine)
