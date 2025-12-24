@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c564c2f5f3c0aa4f9bf5b5148c26ca6
+guid: a8ce17b197a09784787864d6938d8a88
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanM@ObjectBook01_L
+      name: HumanM@CastingExit01
       takeName: Untitled
       internalID: 3094330708855449807
       firstFrame: 0
-      lastFrame: 9
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

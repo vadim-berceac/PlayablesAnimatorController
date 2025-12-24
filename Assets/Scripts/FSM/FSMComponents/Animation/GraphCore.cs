@@ -27,6 +27,8 @@ public class GraphCore
         {
             LayerMixer.SetInputWeight(layerIndex, Mathf.Clamp01(weight));
         }
+
+        Graph.Evaluate();
     }
 
     public void SetUpLayer(int layerIndex, AvatarMask avatarMask, bool isAdditive)
