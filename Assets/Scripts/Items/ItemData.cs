@@ -18,7 +18,7 @@ public interface IWeaponData
     public float Damage { get; set; }
     public float Range { get; set; }
     public AnimationSet AnimationSet { get; set; }
-    public WeaponRange RangeType { get; set; }
+    public WeaponType Type { get; set; }
     public HandPosition[] HandSetups { get; set; }
 }
 

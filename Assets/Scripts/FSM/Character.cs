@@ -3,10 +3,8 @@ using UnityEngine;
 using Zenject;
 
 public class Character : MonoBehaviour
-{
-    [field: SerializeField] public bool IsPlayerControlled { get; set; }
+{ 
     [field: SerializeField] public CharacterSettings CharacterSettings { get; set; }
-   
     public Inventory Inventory => CharacterSettings.Inventory;
     public Fsm FullBodyFsm { get; private set; }
     public Fsm UpperBodyFsm { get; private set; }
@@ -20,10 +18,7 @@ public class Character : MonoBehaviour
     [Inject]
     private void Construct(StatesContainer statesContainer, AvatarMasksContainer avatarMasksContainer, PlayerInput playerInput)
     {
-        if (IsPlayerControlled)
-        {
-            InputHandler = new InputHandler(playerInput);
-        }
+        SetInputMode(CharacterSettings.BrainInputModule);
         
         StatesContainer = statesContainer;
         AvatarMasksContainer = avatarMasksContainer;
@@ -45,6 +40,12 @@ public class Character : MonoBehaviour
             };
         UpperBodyFsm.ConnectToMultipleLayers(upperSmConfigs);
         UpperBodyFsm.SetStatesTransition(_statesTransition);
+    }
+    
+    public void SetInputMode(ICharacterInput input)
+    {
+        //IsAI = input is AIBrainInputModule;
+        InputHandler = new InputHandler(input);
     }
 
     private void Update()
@@ -75,6 +76,7 @@ public class Character : MonoBehaviour
 [System.Serializable]
 public struct CharacterSettings
 {
+    [field: SerializeField] public AIBrainInputModule BrainInputModule { get; set; }
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public Inventory Inventory { get; set; }
 }

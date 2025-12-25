@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DebugInterface : MonoBehaviour
 {
-   [field: SerializeField] private Character FSM { get; set; }
+   private Character _character;
    [field: SerializeField] private Text prevStateText { get; set; }
    [field: SerializeField] private Text currentStateText { get; set; }
    [field: SerializeField] private Text animationSpeedText { get; set; }
@@ -18,21 +18,51 @@ public class DebugInterface : MonoBehaviour
 
    private void Awake()
    {
-      FSM.FullBodyFsm.OnStateChanged += OnStateChanged;
-      FSM.FullBodyFsm.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged;
-      FSM.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged;
+      CharacterSelector.OnCharacterSelected += OnCharacterChanged;
+   }
+   
+   private void OnCharacterChanged(AIBrainInputModule brain)
+   {
+      Subscribe(brain.Character);
+   }
+   
+   private void Subscribe (Character character)
+   {
+      Unsubscribe();
       
-      OnStateChanged(FSM.FullBodyFsm.PreviousState, FSM.FullBodyFsm.CurrentState);
-      OnAnimationSpeedChanged(FSM.FullBodyFsm.StatesTransition.CurrentAnimationSpeed);
-      OnMovementSpeedChanged(FSM.FullBodyFsm.StatesTransition.CurrentMovementSpeed);
+      _character = character;
+      
+      _character.FullBodyFsm.OnStateChanged += OnStateChanged;
+      _character.FullBodyFsm.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged;
+      _character.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged;
+      
+      OnStateChanged(_character.FullBodyFsm.PreviousState, _character.FullBodyFsm.CurrentState);
+      OnAnimationSpeedChanged(_character.FullBodyFsm.StatesTransition.CurrentAnimationSpeed);
+      OnMovementSpeedChanged(_character.FullBodyFsm.StatesTransition.CurrentMovementSpeed);
       //
-      FSM.UpperBodyFsm.OnStateChanged += OnStateChanged0;
-      FSM.UpperBodyFsm.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged0;
-      FSM.UpperBodyFsm.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged0;
+      _character.UpperBodyFsm.OnStateChanged += OnStateChanged0;
+      _character.UpperBodyFsm.StatesTransition.OnMovementSpeedChanged += OnMovementSpeedChanged0;
+      _character.UpperBodyFsm.StatesTransition.OnAnimationSpeedChanged += OnAnimationSpeedChanged0;
       
-      OnStateChanged0(FSM.UpperBodyFsm.PreviousState, FSM.UpperBodyFsm.CurrentState);
-      OnAnimationSpeedChanged0(FSM.UpperBodyFsm.StatesTransition.CurrentAnimationSpeed);
-      OnMovementSpeedChanged0(FSM.UpperBodyFsm.StatesTransition.CurrentMovementSpeed);
+      OnStateChanged0(_character.UpperBodyFsm.PreviousState, _character.UpperBodyFsm.CurrentState);
+      OnAnimationSpeedChanged0(_character.UpperBodyFsm.StatesTransition.CurrentAnimationSpeed);
+      OnMovementSpeedChanged0(_character.UpperBodyFsm.StatesTransition.CurrentMovementSpeed);
+   }
+
+   private void Unsubscribe()
+   {
+      if (_character == null)
+      {
+         return;
+      }
+      _character.FullBodyFsm.OnStateChanged -= OnStateChanged;
+      _character.FullBodyFsm.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
+      _character.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
+      
+      //
+      _character.UpperBodyFsm.OnStateChanged -= OnStateChanged;
+      _character.UpperBodyFsm.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
+      _character.UpperBodyFsm.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
    }
 
    private void OnStateChanged(State previous, State current)
@@ -83,13 +113,7 @@ public class DebugInterface : MonoBehaviour
 
    private void OnDisable()
    {
-      FSM.FullBodyFsm.OnStateChanged -= OnStateChanged;
-      FSM.FullBodyFsm.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
-      FSM.FullBodyFsm.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
-      
-      //
-      FSM.UpperBodyFsm.OnStateChanged -= OnStateChanged;
-      FSM.UpperBodyFsm.StatesTransition.OnMovementSpeedChanged -= OnMovementSpeedChanged;
-      FSM.UpperBodyFsm.StatesTransition.OnAnimationSpeedChanged -= OnAnimationSpeedChanged;
+      CharacterSelector.OnCharacterSelected -= OnCharacterChanged;
+      Unsubscribe();
    }
 }

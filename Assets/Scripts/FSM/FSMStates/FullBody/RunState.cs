@@ -8,14 +8,14 @@ public class RunState : State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (!c.InputHandler.GetRunInput()), c => StateType.Walk),
+            new(c => (!c.Character.InputHandler.GetRunInput()), c => StateType.Walk),
             new(c => (Mathf.Approximately(c.StatesTransition.CurrentMovementSpeed, MovementSpeed) &&
-                      c.StatesTimer.IsFinished) && c.InputHandler.GetMoveInput().y > 0, c => StateType.Sprint),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
-            new(c => (c.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
+                      c.StatesTimer.IsFinished) && c.Character.InputHandler.GetMoveInput().y > 0, c => StateType.Sprint),
+            new(c => (c.Character.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
                       && !c.Character.Inventory.IsWeaponDrawState), c => StateType.Draw),
-            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
-                                                    && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
+                                                              && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
         };
     }
 }

@@ -10,7 +10,6 @@ public interface IStateMachine
     public StatesContainer StatesContainer { get; set; }
     public StatesTransition StatesTransition { get; set; }
     public StatesTimer StatesTimer { get; set; }
-    public InputHandler InputHandler { get; set; }
     public State CurrentState { get; set; }
     public State PreviousState { get; set; }
     
@@ -27,7 +26,6 @@ public abstract class FSMAbstract : IStateMachine
     public StatesContainer StatesContainer { get; set; }
     public StatesTransition StatesTransition { get; set; }
     public StatesTimer StatesTimer { get; set; }
-    public InputHandler InputHandler { get; set; }
     public State CurrentState { get; set; }
     public State PreviousState { get; set; }
     public Action <State, State> OnStateChanged { get; set; }
@@ -50,7 +48,7 @@ public abstract class FSMAbstract : IStateMachine
     public virtual void Update()
     {
         CurrentState?.OnUpdate(this);
-        AnimatorController.OnUpdate(Time.deltaTime, InputHandler.GetMoveInput().x, InputHandler.GetMoveInput().y);
+        AnimatorController.OnUpdate(Time.deltaTime, Character.InputHandler.GetMoveInput().x, Character.InputHandler.GetMoveInput().y);
     }
 
     public virtual void FixedUpdate()

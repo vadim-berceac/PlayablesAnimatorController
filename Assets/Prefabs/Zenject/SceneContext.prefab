@@ -79,3 +79,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameSceneInstaller
   statesContainerPrefab: {fileID: 4170405669619682467, guid: deccb00eeb161e843aa08c28374bd073, type: 3}
   playerInputPrefab: {fileID: 6878849075961968802, guid: af17a0d9b80b15547af1bfa9fbf94f60, type: 3}
+  characterSelectorPrefab: {fileID: 7930678758123418444, guid: 5eea32958ab233b459cd24777485255c, type: 3}
+  mainCameraPrefab: {fileID: 8944336655422409498, guid: 5988a1943cd049c4d93a9507f9f6a35b, type: 3}

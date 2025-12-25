@@ -31,25 +31,10 @@ MonoBehaviour:
       <Position>k__BackingField: {x: -0.199, y: -0.268, z: -0.115}
       <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
       <Scale>k__BackingField: 1
-  - <WearablePrefab>k__BackingField: {fileID: 4961391038631258071, guid: 6009e794e0dfe44418b3cec56a9ddf9f, type: 3}
-    <BonePosition>k__BackingField:
-      <HumanBodyBone>k__BackingField: 15
-      <OccupiedPoint>k__BackingField: 4
-      <Position>k__BackingField: {x: 0, y: 0.148, z: 0.016}
-      <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
-      <Scale>k__BackingField: 1
   <Damage>k__BackingField: 20
   <Range>k__BackingField: 1.2
   <AnimationSet>k__BackingField: 1
-  <RangeType>k__BackingField: 0
-  <HandSetup>k__BackingField:
-    <WearableModelIndex>k__BackingField: 2
-    <BonePosition>k__BackingField:
-      <HumanBodyBone>k__BackingField: 18
-      <OccupiedPoint>k__BackingField: 4
-      <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
-      <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
-      <Scale>k__BackingField: 1
+  <Type>k__BackingField: 0
   <HandSetups>k__BackingField:
   - <WearableModelIndex>k__BackingField: 0
     <BonePosition>k__BackingField:

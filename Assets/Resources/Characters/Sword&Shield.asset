@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1998a7402997bc64b8f8f10541f52ee9, type: 3}
+  m_Name: Sword&Shield
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  <Name>k__BackingField: Sword&Shield
+  <Skin>k__BackingField: {fileID: 11400000, guid: c0e4184000d8547409f2bb7f7c5cdb9e, type: 2}
+  <PrimaryWeapon>k__BackingField: {fileID: 11400000, guid: 567d447483c56bf40902d9ff0b16e8a2, type: 2}

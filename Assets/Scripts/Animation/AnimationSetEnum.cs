@@ -8,11 +8,13 @@ public enum AnimationSet
     Polearm = 3,
     DualWield = 4,
     Bow = 5,
-    Spell = 6
+    Spell = 6,
+    Shield = 7,
 }
 
-public enum WeaponRange
+public enum WeaponType
 {
     Melee = 0,
     Ranged = 1,
+    Shield = 2,
 }

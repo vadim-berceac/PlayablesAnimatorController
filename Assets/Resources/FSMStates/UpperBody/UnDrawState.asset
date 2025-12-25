@@ -83,3 +83,20 @@ MonoBehaviour:
         <MaskType>k__BackingField: 5
         <IsAdditive>k__BackingField: 0
         <Weight>k__BackingField: 1
+  - <AnimationSet>k__BackingField: 7
+    <ClipsBlendData>k__BackingField:
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: a8ce17b197a09784787864d6938d8a88, type: 3}
+      <BlendParams>k__BackingField:
+        <Param1>k__BackingField: 0
+        <Param2>k__BackingField: 0
+      <LayersConfigs>k__BackingField:
+      - <GraphPortIndex>k__BackingField: 1
+        <OutputPortIndex>k__BackingField: 0
+        <MaskType>k__BackingField: 4
+        <IsAdditive>k__BackingField: 1
+        <Weight>k__BackingField: 1
+      - <GraphPortIndex>k__BackingField: 2
+        <OutputPortIndex>k__BackingField: 1
+        <MaskType>k__BackingField: 6
+        <IsAdditive>k__BackingField: 0
+        <Weight>k__BackingField: 1

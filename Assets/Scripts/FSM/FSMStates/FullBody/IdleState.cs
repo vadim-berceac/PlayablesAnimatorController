@@ -8,11 +8,11 @@ public class IdleState : State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.InputHandler.GetMoveInput().magnitude > 0.05f), c => StateType.Walk),
-            new(c => (c.InputHandler.GetCrouchInput()), c => StateType.Crouch),
-            new(c => (c.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
+            new(c => (c.Character.InputHandler.GetMoveInput().magnitude > 0.05f), c => StateType.Walk),
+            new(c => (c.Character.InputHandler.GetCrouchInput()), c => StateType.Crouch),
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
                                                     && !c.Character.Inventory.IsWeaponDrawState), c => StateType.Draw),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.Character.InputHandler.GetJumpInput()), c => StateType.Jump),
         };
     }
 }

@@ -36,7 +36,7 @@ public abstract class State : ScriptableObject, IState
 
         if (ResetBufferedInput)
         {
-            stateMachine.InputHandler.ResetBufferedInput();
+            stateMachine.Character.InputHandler.ResetBufferedInput();
         }
         
         this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections);

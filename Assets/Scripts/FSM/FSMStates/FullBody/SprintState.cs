@@ -8,13 +8,13 @@ public class SprintState : State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.StatesTimer.IsFinished || !c.InputHandler.GetRunInput() 
-                                               || c.InputHandler.GetMoveInput().y <= 0), c => StateType.Run),
-            new(c => (c.InputHandler.GetJumpInput()), c => StateType.Jump),
-            new(c => (c.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
+            new(c => (c.StatesTimer.IsFinished || !c.Character.InputHandler.GetRunInput() 
+                                               || c.Character.InputHandler.GetMoveInput().y <= 0), c => StateType.Run),
+            new(c => (c.Character.InputHandler.GetJumpInput()), c => StateType.Jump),
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.Character.Inventory.GetWeaponInHandsAnimationIndex() > 0 && c.SetType == SetType.UpperBody 
                       && !c.Character.Inventory.IsWeaponDrawState), c => StateType.Draw),
-            new(c => (c.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
-                                                    && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.SetType == SetType.UpperBody 
+                                                              && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
         };
     }
 }

@@ -8,8 +8,8 @@ public class UpperCombatIdleState: State
     {
         SwitchStateConditions = new List<SwitchStateCondition<IStateMachine>>()
         {
-            new(c => (c.InputHandler.GetDrawInput() && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
-            new(c => (c.InputHandler.GetAttackInput() && c.Character.Inventory.IsWeaponDrawState), c => StateType.Attack0)
+            new(c => (c.Character.InputHandler.GetDrawInput() && c.Character.Inventory.IsWeaponDrawState), c => StateType.UnDraw),
+            new(c => (c.Character.InputHandler.GetAttackInput() && c.Character.Inventory.IsWeaponDrawState), c => StateType.Attack0)
         };
     }
 }

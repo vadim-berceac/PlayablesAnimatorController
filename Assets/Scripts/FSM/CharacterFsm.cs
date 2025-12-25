@@ -10,7 +10,6 @@ public class Fsm : FSMAbstract
        Character = character;
        GraphCore = character.GraphCore;
        StatesContainer = character.StatesContainer;
-       InputHandler = character.InputHandler;
        AnimatorController = new PlayablesAnimatorController(GraphCore, graphPortIndex);
        StatesTimer = new StatesTimer();
        

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,22 +7,29 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     [field: SerializeField] public InputActionAsset PlayerAction { get; set; }
     
     public Vector2 Move { get; set; }
+    public Vector2 Look { get; set; }
     public bool Run { get; set; }
     public bool Jump { get; set; }
     public bool Crouch { get; set; }
     public bool Draw { get; set; }
     public bool Attack { get; set; }
     
+    private InputAction _nextAction;
     private InputAction _moveAction;
+    private InputAction _lookAction;
     private InputAction _runAction;
     private InputAction _jumpAction;
     private InputAction _crouchAction;
     private InputAction _drawAction;
     private InputAction _attackAction;
 
+    public Action OnCharacterSwitch;
+
     private void Awake()
     {
+        _nextAction = PlayerAction.FindAction("Next");
         _moveAction = PlayerAction.FindAction("Move");
+        _lookAction = PlayerAction.FindAction("Look");
         _runAction = PlayerAction.FindAction("Run");
         _jumpAction = PlayerAction.FindAction("Jump");
         _crouchAction = PlayerAction.FindAction("Crouch");
@@ -40,8 +48,13 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
 
     private void Subscribe()
     {
+        _nextAction.performed += OnSwitchCharacter;
+        
         _moveAction.performed += OnMove;
         _moveAction.canceled += OnMoveCancel;
+        
+        _lookAction.performed += OnLook;
+        _lookAction.canceled += OnLookCancel;
         
         _runAction.performed += OnRun;
         _runAction.canceled += OnRunCancel;
@@ -56,8 +69,13 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
 
     private void Unsubscribe()
     {
+        _nextAction.performed -= OnSwitchCharacter;
+        
         _moveAction.performed -= OnMove;
         _moveAction.canceled -= OnMoveCancel;
+        
+        _lookAction.performed -= OnLook;
+        _lookAction.canceled -= OnLookCancel;
         
         _runAction.performed -= OnRun;
         _runAction.canceled -= OnRunCancel;
@@ -74,6 +92,11 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     {
         Unsubscribe();
     }
+    
+    private void OnSwitchCharacter(InputAction.CallbackContext context)
+    {
+        OnCharacterSwitch?.Invoke();
+    }
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -83,6 +106,16 @@ public class PlayerInput : MonoBehaviour, ICharacterInput
     private void OnMoveCancel(InputAction.CallbackContext context)
     {
         Move = context.ReadValue<Vector2>();
+    }
+
+    private void OnLook(InputAction.CallbackContext context)
+    {
+        Look = context.ReadValue<Vector2>();
+    }
+
+    private void OnLookCancel(InputAction.CallbackContext context)
+    {
+        Look = context.ReadValue<Vector2>();
     }
 
     private void OnRun(InputAction.CallbackContext context)

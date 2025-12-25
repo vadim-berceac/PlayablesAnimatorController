@@ -46,6 +46,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpineCorrector
   originalSpine: {fileID: 8997890095042214206}
   animator: {fileID: 171680127486665446}
+--- !u!1 &5662771417557900020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955904156551488885}
+  - component: {fileID: 1894730735124867927}
+  m_Layer: 0
+  m_Name: Brain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955904156551488885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662771417557900020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3811811400955406905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894730735124867927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662771417557900020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3bd7ef9bb5a3c458566ee3c62975f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIBrainInputModule
+  <Character>k__BackingField: {fileID: 3844237546182799800}
 --- !u!1001 &3705617211650887122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,6 +146,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e87f441834c77c4baffbc762a064d56, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1955904156551488885}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e87f441834c77c4baffbc762a064d56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 26403268460420307}
@@ -162,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da58f11202ffb647b821158acbb4d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresetLoader
-  <CharacterData>k__BackingField: {fileID: 11400000, guid: e8ca2427d5a9478448ab69fc540e33d5, type: 2}
+  <CharacterData>k__BackingField: {fileID: 11400000, guid: ae2e68c7f31c1224fbe9ea8d62b4dda0, type: 2}
   <PresetLoaderSettings>k__BackingField:
     <SkeletonRenderer>k__BackingField: {fileID: 7179351940491090417}
     <Animator>k__BackingField: {fileID: 171680127486665446}
@@ -193,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a16de0c3de729446b4c44d564f7548d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  <IsPlayerControlled>k__BackingField: 1
   <CharacterSettings>k__BackingField:
+    <BrainInputModule>k__BackingField: {fileID: 1894730735124867927}
     <Animator>k__BackingField: {fileID: 171680127486665446}
     <Inventory>k__BackingField: {fileID: 8291896062978937071}
 --- !u!137 &7179351940491090417 stripped
