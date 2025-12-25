@@ -50,7 +50,7 @@ MonoBehaviour:
     <HorizontalRotationSpeed>k__BackingField: 0.25
     <VerticalRotationSpeed>k__BackingField: 0.045
     <TopClamp>k__BackingField: 40
-    <BottomClamp>k__BackingField: -20
+    <BottomClamp>k__BackingField: -10
     <CameraAngleOverride>k__BackingField: 0
 --- !u!1001 &4760252409156713145
 PrefabInstance:

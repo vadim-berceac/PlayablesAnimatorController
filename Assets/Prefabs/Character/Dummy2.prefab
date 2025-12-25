@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4779165080327100935}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.003002514, y: 0, z: -0, w: 0.9999955}
-  m_LocalPosition: {x: 0, y: 1.063237, z: 0.023323}
+  m_LocalRotation: {x: 7.537291e-11, y: 0.0000017531268, z: -0.000043883512, w: 1}
+  m_LocalPosition: {x: 0.00000033015945, y: 0.99791867, z: 0.00000051621345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,8 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f852d5862733f8e498cee5f73c2a5228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpineCorrector
-  originalSpine: {fileID: 8997890095042214206}
   animator: {fileID: 171680127486665446}
+  yawCorrectionStrength: 0.5
+  pitchCorrectionStrength: 0.7
+  rollCorrectionStrength: 0.7
+  yawAngleThreshold: 10
+  pitchAngleThreshold: 10
+  rollAngleThreshold: 10
+  smoothTime: 0.2
+  enableCorrection: 1
 --- !u!1 &5662771417557900020
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da58f11202ffb647b821158acbb4d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresetLoader
-  <CharacterData>k__BackingField: {fileID: 11400000, guid: ae2e68c7f31c1224fbe9ea8d62b4dda0, type: 2}
+  <CharacterData>k__BackingField: {fileID: 11400000, guid: 0ab8eab2a50d2114eae980e3b214b1b7, type: 2}
   <PresetLoaderSettings>k__BackingField:
     <SkeletonRenderer>k__BackingField: {fileID: 7179351940491090417}
     <Animator>k__BackingField: {fileID: 171680127486665446}
@@ -248,10 +255,5 @@ MonoBehaviour:
 --- !u!137 &7179351940491090417 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5822821947120931875, guid: 9e87f441834c77c4baffbc762a064d56, type: 3}
-  m_PrefabInstance: {fileID: 3705617211650887122}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8997890095042214206 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: 9e87f441834c77c4baffbc762a064d56, type: 3}
   m_PrefabInstance: {fileID: 3705617211650887122}
   m_PrefabAsset: {fileID: 0}

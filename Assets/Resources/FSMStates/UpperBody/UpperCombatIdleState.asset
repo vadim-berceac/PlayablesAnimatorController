@@ -50,7 +50,7 @@ MonoBehaviour:
         <Weight>k__BackingField: 1
   - <AnimationSet>k__BackingField: 2
     <ClipsBlendData>k__BackingField:
-    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 00ce08b2f3eb92d41a5d102c2c9be04b, type: 3}
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 5c4e32d4d7b1ae542a926e46fdfddbe5, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
         <Weight>k__BackingField: 1
   - <AnimationSet>k__BackingField: 3
     <ClipsBlendData>k__BackingField:
-    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 02df489f6b4617240a6d12c38b7f8e23, type: 3}
+    - <Clip>k__BackingField: {fileID: 3094330708855449807, guid: 5d5c5fad8c1894b4e8ed1e8edd633b7d, type: 3}
       <BlendParams>k__BackingField:
         <Param1>k__BackingField: 0
         <Param2>k__BackingField: 0

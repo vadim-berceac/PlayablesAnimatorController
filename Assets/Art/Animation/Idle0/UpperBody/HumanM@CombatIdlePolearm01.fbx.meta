@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02df489f6b4617240a6d12c38b7f8e23
+guid: 5d5c5fad8c1894b4e8ed1e8edd633b7d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,18 +33,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanM@WeaponHoldPolearm01
+      name: HumanM@CombatIdlePolearm01
       takeName: Untitled
       internalID: 3094330708855449807
       firstFrame: 0
-      lastFrame: 10
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
