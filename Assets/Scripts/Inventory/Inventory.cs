@@ -14,9 +14,9 @@ public class Inventory : MonoBehaviour
         PrimaRuntimeWeapon.Equip(InventorySettings.Animator);
     }
 
-    public int GetWeaponInHandsAnimationIndex()
+    public int GetWeaponInHandsAnimationIndex(int handSetupIndex)
     {
-        return (int)((WeaponData)PrimaRuntimeWeapon.ItemData).AnimationSet;
+        return (int)((WeaponData)PrimaRuntimeWeapon.ItemData).HandSetups[handSetupIndex].AnimationSet;
     }
     public void DrawPrimaryWeapon()
     {

@@ -17,6 +17,7 @@ public struct BonePosition
     [field: SerializeField] public Vector3 Position { get; set; }
     [field: SerializeField] public Vector3 Rotation { get; set; }
     [field: SerializeField] public float Scale { get; set; }
+    [field: SerializeField] public bool Enabled { get; set; }
 }
 
 [System.Serializable]
@@ -29,6 +30,8 @@ public struct WearableModel
 [System.Serializable]
 public struct HandPosition
 {
+    [field: SerializeField] public AnimationSet AnimationSet { get; set; }
+    [field: SerializeField] public WeaponType Type { get; set; }
     [field: SerializeField] public int WearableModelIndex { get; set; }
     [field: SerializeField] public BonePosition BonePosition { get; set; }
 }

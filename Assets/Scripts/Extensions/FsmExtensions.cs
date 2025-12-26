@@ -4,10 +4,10 @@ using UnityEngine.Playables;
 
 public static class FsmExtensions
 {
-    public static void SwitchAnimation(this IStateMachine stateMachine)
+    public static void SwitchAnimation(this IStateMachine stateMachine, int handSetupIndex)
     {
         var collectionIndex = stateMachine.CurrentState.LinkToWeaponIndex 
-            ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex() : 0;
+            ? stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex(handSetupIndex) : 0;
         stateMachine.StatesTimer.Start(stateMachine.CurrentState, collectionIndex);
         stateMachine.StatesTimer.SetActionNormalizedTime(stateMachine.CurrentState.ActionTime);
         var clipBlendDataCollection = stateMachine.CurrentState.ClipBlendDataCollections[collectionIndex];

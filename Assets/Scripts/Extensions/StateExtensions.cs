@@ -4,14 +4,14 @@ using UnityEngine;
 public static class StateExtensions
 {
     public static void SwitchAvatarMask(this State state, IStateMachine stateMachine, bool linkToWeaponIndex, 
-        ClipBlendDataCollection[] clipBlendDataCollections)
+        ClipBlendDataCollection[] clipBlendDataCollections, int handSetupIndex)
     {
         if (stateMachine.SetType != SetType.UpperBody || !linkToWeaponIndex ||stateMachine.Character.Inventory.
-                GetWeaponInHandsAnimationIndex() == 0)
+                GetWeaponInHandsAnimationIndex(handSetupIndex) == 0)
         {
             return;
         }
-        var clipBlendData = clipBlendDataCollections[stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex()].
+        var clipBlendData = clipBlendDataCollections[stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex(handSetupIndex)].
             ClipsBlendData[0];
        
         if (clipBlendData.LayersConfigs == null || clipBlendData.LayersConfigs.Length == 0)

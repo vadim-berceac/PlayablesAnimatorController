@@ -32,14 +32,14 @@ public abstract class State : ScriptableObject, IState
     public virtual void OnEnter(IStateMachine stateMachine)
     {
         this.CheckDuplicatingState(stateMachine);
-        stateMachine.SwitchAnimation();
+        stateMachine.SwitchAnimation(0);
 
         if (ResetBufferedInput)
         {
             stateMachine.Character.InputHandler.ResetBufferedInput();
         }
         
-        this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections);
+        this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections, 0);
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)

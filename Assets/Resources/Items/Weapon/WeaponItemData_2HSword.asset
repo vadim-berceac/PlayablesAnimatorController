@@ -24,11 +24,12 @@ MonoBehaviour:
       <Position>k__BackingField: {x: 0.142, y: 0.473, z: -0.141}
       <Rotation>k__BackingField: {x: 0, y: 0, z: 160}
       <Scale>k__BackingField: 1
+      <Enabled>k__BackingField: 1
   <Damage>k__BackingField: 30
   <Range>k__BackingField: 1.4
-  <AnimationSet>k__BackingField: 2
-  <RangeType>k__BackingField: 0
-  <HandSetup>k__BackingField:
+  <HandSetups>k__BackingField:
+  - <AnimationSet>k__BackingField: 2
+    <Type>k__BackingField: 0
     <WearableModelIndex>k__BackingField: 0
     <BonePosition>k__BackingField:
       <HumanBodyBone>k__BackingField: 18
@@ -36,11 +37,4 @@ MonoBehaviour:
       <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
       <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
       <Scale>k__BackingField: 1
-  <HandSetups>k__BackingField:
-  - <WearableModelIndex>k__BackingField: 0
-    <BonePosition>k__BackingField:
-      <HumanBodyBone>k__BackingField: 18
-      <OccupiedPoint>k__BackingField: 4
-      <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
-      <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
-      <Scale>k__BackingField: 1
+      <Enabled>k__BackingField: 1

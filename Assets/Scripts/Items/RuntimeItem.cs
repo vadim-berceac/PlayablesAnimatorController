@@ -42,7 +42,7 @@ public class RuntimeWearable : RuntimeItem
             var part = Object.Instantiate(model.WearablePrefab);
             Parts.Add(part.transform);
             animator.AttachToBone(part.transform, model.BonePosition.HumanBodyBone, model.BonePosition.Position,
-                model.BonePosition.Rotation, model.BonePosition.Scale);
+                model.BonePosition.Rotation, model.BonePosition.Scale, model.BonePosition.Enabled);
         }
     }
 
@@ -84,7 +84,7 @@ public class RuntimeWeapon : RuntimeWearable
         
         _part = Parts[ItemData.HandSetups[0].WearableModelIndex];
         var data = ItemData.HandSetups[0].BonePosition;
-        animator.AttachToBone(_part, data.HumanBodyBone, data.Position, data.Rotation, data.Scale);
+        animator.AttachToBone(_part, data.HumanBodyBone, data.Position, data.Rotation, data.Scale, data.Enabled);
         IsDraw = true;
     }
 
@@ -96,7 +96,7 @@ public class RuntimeWeapon : RuntimeWearable
             return;
         }
         animator.AttachToBone(_part, _previousBonePosition.HumanBodyBone, 
-            _previousBonePosition.Position, _previousBonePosition.Rotation, _previousBonePosition.Scale);
+            _previousBonePosition.Position, _previousBonePosition.Rotation, _previousBonePosition.Scale, _previousBonePosition.Enabled);
         IsDraw = false;
     }
 }
