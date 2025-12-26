@@ -15,7 +15,7 @@ public class PresetLoader : MonoBehaviour
    {
       gameObject.name = CharacterData.Name;
    }
-
+   
    private void SetAppearance()
    {
       if (CharacterData.Skin == null || CharacterData.Skin.SkinPrefab == null)
@@ -24,10 +24,22 @@ public class PresetLoader : MonoBehaviour
       var newSkinMesh = CharacterData.Skin.SkinPrefab.GetComponentInChildren<SkinnedMeshRenderer>();
       var prefabAnimator = CharacterData.Skin.SkinPrefab.GetComponent<Animator>();
 
-      PresetLoaderSettings.SkeletonRenderer.ApplyNewSkinWithRebind(
+      // Настройки ретаргетинга
+      var options = new AdvancedSkinRetargeting.RetargetingOptions
+      {
+         useNameMatching = true,           // Точное совпадение имен
+         useFuzzyMatching = true,          // Нечеткое совпадение (для Mixamo разных версий)
+         useHierarchyMatching = true,      // Маппинг по иерархии
+         allowBindposeRecalculation = true, // Пересчет bindpose при необходимости
+         updateWhenOffscreen = false,
+         logUnmappedBones = true           // Логировать проблемы
+      };
+
+      PresetLoaderSettings.SkeletonRenderer.ApplyNewSkinWithRetargeting(
          newSkinMesh,
-         PresetLoaderSettings.Animator,   // текущий персонаж
-         prefabAnimator                   // аниматор из префаба
+         PresetLoaderSettings.Animator,
+         prefabAnimator,
+         options
       );
    }
 
