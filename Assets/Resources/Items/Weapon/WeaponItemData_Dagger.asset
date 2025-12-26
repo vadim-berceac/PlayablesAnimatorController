@@ -23,7 +23,7 @@ MonoBehaviour:
       <OccupiedPoint>k__BackingField: 0
       <Position>k__BackingField: {x: -0.199, y: 0.072, z: 0.077}
       <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
-      <Scale>k__BackingField: 1
+      <Scale>k__BackingField: 0.8
       <Enabled>k__BackingField: 1
   - <WearablePrefab>k__BackingField: {fileID: 6060900598693940223, guid: 89cdf7fa54e3caa42909c8e589f0ddc7, type: 3}
     <BonePosition>k__BackingField:
@@ -33,10 +33,12 @@ MonoBehaviour:
       <Rotation>k__BackingField: {x: 0, y: 270, z: 150.53104}
       <Scale>k__BackingField: 1
       <Enabled>k__BackingField: 1
-  <Damage>k__BackingField: 10
-  <Range>k__BackingField: 0.8
   <HandSetups>k__BackingField:
-  - <AnimationSet>k__BackingField: 1
+  - <WeaponAttributes>k__BackingField:
+      <Damage>k__BackingField: 25
+      <Range>k__BackingField: 0.9
+      <Speed>k__BackingField: 1.3
+    <AnimationSet>k__BackingField: 1
     <Type>k__BackingField: 0
     <WearableModelIndex>k__BackingField: 0
     <BonePosition>k__BackingField:
@@ -44,9 +46,13 @@ MonoBehaviour:
       <OccupiedPoint>k__BackingField: 4
       <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
       <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
-      <Scale>k__BackingField: 1
+      <Scale>k__BackingField: 0.8
       <Enabled>k__BackingField: 1
-  - <AnimationSet>k__BackingField: 4
+  - <WeaponAttributes>k__BackingField:
+      <Damage>k__BackingField: 25
+      <Range>k__BackingField: 0.9
+      <Speed>k__BackingField: 1.3
+    <AnimationSet>k__BackingField: 4
     <Type>k__BackingField: 0
     <WearableModelIndex>k__BackingField: 0
     <BonePosition>k__BackingField:
@@ -54,9 +60,13 @@ MonoBehaviour:
       <OccupiedPoint>k__BackingField: 4
       <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
       <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
-      <Scale>k__BackingField: 1
+      <Scale>k__BackingField: 0.8
       <Enabled>k__BackingField: 1
-  - <AnimationSet>k__BackingField: 7
+  - <WeaponAttributes>k__BackingField:
+      <Damage>k__BackingField: 25
+      <Range>k__BackingField: 0.9
+      <Speed>k__BackingField: 1.3
+    <AnimationSet>k__BackingField: 7
     <Type>k__BackingField: 0
     <WearableModelIndex>k__BackingField: 0
     <BonePosition>k__BackingField:
@@ -64,5 +74,5 @@ MonoBehaviour:
       <OccupiedPoint>k__BackingField: 4
       <Position>k__BackingField: {x: 0.011, y: 0.075, z: 0.037}
       <Rotation>k__BackingField: {x: 352.427, y: 358.7012, z: 79.549805}
-      <Scale>k__BackingField: 1
+      <Scale>k__BackingField: 0.8
       <Enabled>k__BackingField: 1

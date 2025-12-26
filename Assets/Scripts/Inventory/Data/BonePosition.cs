@@ -30,6 +30,7 @@ public struct WearableModel
 [System.Serializable]
 public struct HandPosition
 {
+    [field: SerializeField] public WeaponAttributes WeaponAttributes { get; set; }
     [field: SerializeField] public AnimationSet AnimationSet { get; set; }
     [field: SerializeField] public WeaponType Type { get; set; }
     [field: SerializeField] public int WearableModelIndex { get; set; }

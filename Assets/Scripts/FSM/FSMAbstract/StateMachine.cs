@@ -15,6 +15,8 @@ public interface IStateMachine
     
     public void SwitchState(StateType stateType);
     public void SetStatesTransition(StatesTransition transition);
+    public bool IsWaitingForCrossFade();
+    public void SetWaitingForCrossFade(bool waiting);
 }
 
 public abstract class FSMAbstract : IStateMachine
@@ -29,6 +31,8 @@ public abstract class FSMAbstract : IStateMachine
     public State CurrentState { get; set; }
     public State PreviousState { get; set; }
     public Action <State, State> OnStateChanged { get; set; }
+    
+    protected bool WaitingForCrossFade;
 
     public void SetStatesTransition(StatesTransition transition)
     {
@@ -59,5 +63,15 @@ public abstract class FSMAbstract : IStateMachine
     public virtual void LateUpdate()
     {
         CurrentState?.OnLateUpdate(this);
+    }
+
+    public bool IsWaitingForCrossFade() 
+    {
+        return WaitingForCrossFade;
+    }
+
+    public void SetWaitingForCrossFade(bool waiting) 
+    {
+        WaitingForCrossFade = waiting;
     }
 }

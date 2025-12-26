@@ -6,6 +6,7 @@ namespace Editor
     [CustomPropertyDrawer(typeof(HandPosition))]
     public class HandPositionDrawer : PropertyDrawer
     {
+        private const string WeaponAttributesBacking = "<WeaponAttributes>k__BackingField";
         private const string VisibleModelsBacking = "<VisibleModels>k__BackingField";
         private const string AnimationSetBacking = "<AnimationSet>k__BackingField";
         private const string TypeBacking = "<Type>k__BackingField";
@@ -14,6 +15,7 @@ namespace Editor
         private const string BoneBacking = "<BonePosition>k__BackingField"; 
         private const string NoModelsAvailable = "<No Models Available>";
         private const string EmptyModel = "<Empty>";
+        private const string WeaponAttributesLabel = "Weapon Attributes";
         private const string AnimationSetLabel = "Animation Set";
         private const string WeaponTypeLabel = "Weapon Type";
         private const string HandModelLabel = "Hand Model";
@@ -56,6 +58,15 @@ namespace Editor
             var spacing = EditorGUIUtility.standardVerticalSpacing;
 
             var currentY = position.y;
+            
+            // Weapon Attributes field
+            var weaponAttributesProp = property.FindPropertyRelative(WeaponAttributesBacking);
+            if (weaponAttributesProp != null)
+            {
+                var rect = new Rect(position.x, currentY, position.width, EditorGUI.GetPropertyHeight(weaponAttributesProp, true));
+                EditorGUI.PropertyField(rect, weaponAttributesProp, new GUIContent(WeaponAttributesLabel), true);
+                currentY += rect.height + spacing;
+            }
 
             // Animation Set field
             var animationSetProp = property.FindPropertyRelative(AnimationSetBacking);
@@ -104,6 +115,13 @@ namespace Editor
             var spacing = EditorGUIUtility.standardVerticalSpacing;
             
             var totalHeight = 0f;
+            
+            // Weapon Attributes - ДОБАВЛЕНО
+            var weaponAttributesProp = property.FindPropertyRelative(WeaponAttributesBacking);
+            if (weaponAttributesProp != null)
+            {
+                totalHeight += EditorGUI.GetPropertyHeight(weaponAttributesProp, true) + spacing;
+            }
             
             // Animation Set
             var animationSetProp = property.FindPropertyRelative(AnimationSetBacking);

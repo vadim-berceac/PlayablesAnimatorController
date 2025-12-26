@@ -31,7 +31,6 @@ public abstract class State : ScriptableObject, IState
     
     public virtual void OnEnter(IStateMachine stateMachine)
     {
-        this.CheckDuplicatingState(stateMachine);
         stateMachine.SwitchAnimation(0);
 
         if (ResetBufferedInput)
@@ -39,12 +38,29 @@ public abstract class State : ScriptableObject, IState
             stateMachine.Character.InputHandler.ResetBufferedInput();
         }
         
-        this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections, 0);
+        stateMachine.SetWaitingForCrossFade(true);
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)
     {
+        if (stateMachine.IsWaitingForCrossFade())
+        {
+            var animatorController = stateMachine.AnimatorController;
+            
+            if (animatorController.ConsumeCrossFading())
+            {
+                stateMachine.SetWaitingForCrossFade(false);
+                OnCrossFadeComplete(stateMachine);
+            }
+        }
+        
         CheckSwitchConditions(stateMachine);
+    }
+
+    protected virtual void OnCrossFadeComplete(IStateMachine stateMachine)
+    {
+        this.CheckDuplicatingState(stateMachine);
+        this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections, 0);
     }
 
     public virtual void OnFixedUpdate(IStateMachine stateMachine)
@@ -75,6 +91,7 @@ public abstract class State : ScriptableObject, IState
     public virtual void OnExit(IStateMachine stateMachine)
     {
         stateMachine.StatesTimer.Reset();
+        stateMachine.SetWaitingForCrossFade(false);
     }
 }
 

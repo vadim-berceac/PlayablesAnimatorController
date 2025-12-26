@@ -15,8 +15,6 @@ public interface IWearableData
 
 public interface IWeaponData
 {
-    public float Damage { get; set; }
-    public float Range { get; set; }
     public HandPosition[] HandSetups { get; set; }
 }
 
