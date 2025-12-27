@@ -13,6 +13,7 @@ namespace Editor
         private const string IndexBacking = "<WearableModelIndex>k__BackingField";
         private const string PrefabBacking = "<WearablePrefab>k__BackingField";
         private const string BoneBacking = "<BonePosition>k__BackingField"; 
+        private const string IKBacking = "<IK>k__BackingField"; 
         private const string NoModelsAvailable = "<No Models Available>";
         private const string EmptyModel = "<Empty>";
         private const string WeaponAttributesLabel = "Weapon Attributes";
@@ -20,6 +21,7 @@ namespace Editor
         private const string WeaponTypeLabel = "Weapon Type";
         private const string HandModelLabel = "Hand Model";
         private const string BonePositionLabel = "Bone Position";
+        private const string IKLabel = "IK";
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -96,6 +98,15 @@ namespace Editor
             }
             currentY += lineHeight + spacing;
             
+            // IK field
+            var IKSetProp = property.FindPropertyRelative(IKBacking);
+            if (IKSetProp != null)
+            {
+                var IKRect = new Rect(position.x, currentY, position.width, lineHeight);
+                EditorGUI.PropertyField(IKRect, IKSetProp, new GUIContent(IKLabel));
+            }
+            currentY += lineHeight + spacing;
+            
             // Bone Position field
             var boneProp = property.FindPropertyRelative(BoneBacking);
             var boneHeight = boneProp != null ? EditorGUI.GetPropertyHeight(boneProp, true) : lineHeight;
@@ -105,7 +116,7 @@ namespace Editor
             {
                 EditorGUI.PropertyField(boneRect, boneProp, new GUIContent(BonePositionLabel), true);
             }
-
+            
             EditorGUI.EndProperty();
         }
 
@@ -116,7 +127,7 @@ namespace Editor
             
             var totalHeight = 0f;
             
-            // Weapon Attributes - ДОБАВЛЕНО
+            // Weapon Attributes 
             var weaponAttributesProp = property.FindPropertyRelative(WeaponAttributesBacking);
             if (weaponAttributesProp != null)
             {
@@ -139,6 +150,13 @@ namespace Editor
             
             // Hand Model popup
             totalHeight += lineHeight + spacing;
+            
+            // IK
+            var IKSetProp = property.FindPropertyRelative(IKBacking);
+            if (IKSetProp != null)
+            {
+                totalHeight += lineHeight + spacing;
+            }
             
             // Bone Position
             var boneProp = property.FindPropertyRelative(BoneBacking);

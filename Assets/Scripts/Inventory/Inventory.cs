@@ -18,6 +18,12 @@ public class Inventory : MonoBehaviour
     {
         return (int)((WeaponData)PrimaRuntimeWeapon.ItemData).HandSetups[handSetupIndex].AnimationSet;
     }
+
+    public bool IKRequired(int handSetupIndex)
+    {
+        return ((WeaponData)PrimaRuntimeWeapon.ItemData).HandSetups[handSetupIndex].IK;
+    }
+    
     public void DrawPrimaryWeapon()
     {
         PrimaRuntimeWeapon?.Draw(InventorySettings.Animator);

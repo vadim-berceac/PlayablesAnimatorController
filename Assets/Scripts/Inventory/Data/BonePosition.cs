@@ -34,5 +34,6 @@ public struct HandPosition
     [field: SerializeField] public AnimationSet AnimationSet { get; set; }
     [field: SerializeField] public WeaponType Type { get; set; }
     [field: SerializeField] public int WearableModelIndex { get; set; }
+    [field: SerializeField] public bool IK { get; set; }
     [field: SerializeField] public BonePosition BonePosition { get; set; }
 }

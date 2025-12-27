@@ -79,5 +79,6 @@ public struct CharacterSettings
     [field: SerializeField] public AIBrainInputModule BrainInputModule { get; set; }
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public Inventory Inventory { get; set; }
+    [field: SerializeField] public WeaponIKController WeaponIKController { get; set; }
 }
 

@@ -25,6 +25,7 @@ public abstract class State : ScriptableObject, IState
     [field: Space (3)]
     [field: Header("Animation Settings")]
     [field: SerializeField] public bool LinkToWeaponIndex { get; set; }
+    [field: SerializeField] public bool UseWeaponIK { get; set; }
     [field: SerializeField] public ClipBlendDataCollection[] ClipBlendDataCollections { get; set; }
     
     protected List<SwitchStateCondition<IStateMachine>> SwitchStateConditions = new ();
@@ -32,6 +33,7 @@ public abstract class State : ScriptableObject, IState
     public virtual void OnEnter(IStateMachine stateMachine)
     {
         stateMachine.SwitchAnimation(0);
+        CheckIK(stateMachine);
 
         if (ResetBufferedInput)
         {
@@ -39,6 +41,17 @@ public abstract class State : ScriptableObject, IState
         }
         
         stateMachine.SetWaitingForCrossFade(true);
+    }
+
+    private void CheckIK(IStateMachine stateMachine)
+    {
+        if (!LinkToWeaponIndex || !UseWeaponIK|| !stateMachine.Character.Inventory.IKRequired(0))
+        {
+            stateMachine.Character.CharacterSettings.WeaponIKController.DisableCurrentRig(0.05f);
+            return;
+        }
+        stateMachine.Character.CharacterSettings.WeaponIKController.EnableRig
+            ((AnimationSet)stateMachine.Character.Inventory.GetWeaponInHandsAnimationIndex(0), 0.05f);
     }
 
     public virtual void OnUpdate(IStateMachine stateMachine)

@@ -23,6 +23,7 @@ MonoBehaviour:
   <TimeToExit>k__BackingField: 0
   <ResetBufferedInput>k__BackingField: 1
   <LinkToWeaponIndex>k__BackingField: 1
+  <UseWeaponIK>k__BackingField: 1
   <ClipBlendDataCollections>k__BackingField:
   - <AnimationSet>k__BackingField: 0
     <ClipsBlendData>k__BackingField:

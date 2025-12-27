@@ -33,6 +33,7 @@ MonoBehaviour:
     <AnimationSet>k__BackingField: 2
     <Type>k__BackingField: 0
     <WearableModelIndex>k__BackingField: 0
+    <IK>k__BackingField: 1
     <BonePosition>k__BackingField:
       <HumanBodyBone>k__BackingField: 18
       <OccupiedPoint>k__BackingField: 4
