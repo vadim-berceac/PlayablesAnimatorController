@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 5817038768828545829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.058, y: -0.042, z: 0.458}
+  m_LocalPosition: {x: 0.013, y: -0.13, z: 0.502}
   m_LocalScale: {x: 0.09999999, y: 0.09999999, z: 0.09999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -373,9 +373,9 @@ MonoBehaviour:
     m_Tip: {fileID: 7588736823760050193}
     m_Target: {fileID: 3119389375412790244}
     m_Hint: {fileID: 5575714739002680584}
-    m_TargetPositionWeight: 1
-    m_TargetRotationWeight: 1
-    m_HintWeight: 1
+    m_TargetPositionWeight: 0.8
+    m_TargetRotationWeight: 0.7
+    m_HintWeight: 0.3
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &8295576430833334906
@@ -460,9 +460,9 @@ MonoBehaviour:
     m_Tip: {fileID: 3087591321866449434}
     m_Target: {fileID: 6491782130889009970}
     m_Hint: {fileID: 8000764955777326142}
-    m_TargetPositionWeight: 1
-    m_TargetRotationWeight: 1
-    m_HintWeight: 0.5
+    m_TargetPositionWeight: 0.8
+    m_TargetRotationWeight: 0.7
+    m_HintWeight: 0.3
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &8920310185885389604

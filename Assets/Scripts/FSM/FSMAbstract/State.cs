@@ -33,7 +33,6 @@ public abstract class State : ScriptableObject, IState
     public virtual void OnEnter(IStateMachine stateMachine)
     {
         stateMachine.SwitchAnimation(0);
-        CheckIK(stateMachine);
 
         if (ResetBufferedInput)
         {
@@ -74,6 +73,7 @@ public abstract class State : ScriptableObject, IState
     {
         this.CheckDuplicatingState(stateMachine);
         this.SwitchAvatarMask(stateMachine, LinkToWeaponIndex, ClipBlendDataCollections, 0);
+        CheckIK(stateMachine);
     }
 
     public virtual void OnFixedUpdate(IStateMachine stateMachine)
